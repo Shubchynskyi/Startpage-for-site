@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dmytro Shubchynskyi | Java Developer</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- === META TAGS FOR PREVIEW (Open Graph) === -->
+    <meta property="og:title" content="Dmytro Shubchynskyi | Java Developer"/>
+    <meta property="og:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more."/>
+    <meta property="og:image" content="https://shubchynskyi.pp.ua/img/preview-image.png"/>
+    <meta property="og:url" content="https://shubchynskyi.pp.ua/"/>
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dmytro Shubchynskyi | Java Developer">
+    <meta name="twitter:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more.">
+    <meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/preview-image.png">
+    <meta name="author" content="Dmytro Shubchynskyi">
+    <!-- === END META TAGS FOR PREVIEW === -->
+</head>
+<body>
+    <div class="language-switcher">
+        <div class="current-language">
+            <span class="language-name" id="current-language">EN</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+        <div class="language-dropdown">
+            <div class="language-option" data-lang="en">
+                <span class="language-name">EN</span>
+            </div>
+            <div class="language-option" data-lang="de">
+                <span class="language-name">DE</span>
+            </div>
+            <div class="language-option" data-lang="ru">
+                <span class="language-name">RU</span>
+            </div>
+            <div class="language-option" data-lang="ua">
+                <span class="language-name">UA</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="theme-switcher" id="theme-toggle">
+        <i class="fas fa-moon" id="theme-icon"></i>
+    </div>
+
+    <div class="container">
+        <header>
+            <div class="profile">
+                <h1>Dmytro Shubchynskyi</h1>
+                <h2>Java Software Engineer</h2>
+                <div class="social-links">
+                    <a href="https://cv-shubchynskyi.netlify.app/" target="_blank" title="Resume" class="cv-link"><span>CV</span></a>
+                    <a href="https://github.com/shubchynskyi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/shubchynskyi/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:d.shubchynskyi@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://wa.me/+491754015229" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <section class="about">
+            <h2 data-lang-key="about_me">About Me</h2>
+            <p data-lang-key="about_text">I am a Java developer with experience in creating web applications with Spring Boot. My goal is to use my skills and commitment to develop high-quality software. I am looking for a Java Software Engineer role where I can work on challenging projects, learn new technologies, and grow my skill set.</p>
+            <div class="tech-stack">
+                <h3 data-lang-key="tech_stack">Tech Stack:</h3>
+                <ul>
+                    <li>Java Core</li>
+                    <li>Spring (Boot, MVC, JPA)</li>
+                    <li>Thymeleaf, JSP</li>
+                    <li>REST API</li>
+                    <li>MySQL, PostgreSQL</li>
+                    <li>Docker, CI/CD</li>
+                    <li>HTML, CSS, JavaScript</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="projects">
+            <h2 class="centered-title" data-lang-key="my_projects">My Projects</h2>
+            <div class="project-cards">
+                <div class="project-card" id="quests-app">
+                    <h3>Quests Web App</h3>
+                    <div class="project-description">
+                        <p data-lang-key="quests_description">A web application for creating and completing text quests. Built with Java/Spring + Thymeleaf using PostgreSQL.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-users"></i>
+                            <span data-lang-key="user_management">User Management</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-edit"></i>
+                            <span data-lang-key="quest_creation">Quest Creation</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-cogs"></i>
+                            <span>CI/CD (Jenkins + Docker)</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://quests-app.shubchynskyi.pp.ua/" target="_blank" class="btn">
+                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
+                            <span class="status-indicator" data-url="https://quests-app.shubchynskyi.pp.ua/"></span>
+                        </a>
+                        <a href="https://github.com/shubchynskyi/quests" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card" id="tic-tac-toe">
+                    <h3>Tic-Tac-Toe Game</h3>
+                    <div class="project-description">
+                        <p data-lang-key="tictactoe_description">A web-based game with a responsive design for desktops, tablets, and mobile devices. Features PWA support for home screen installation.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-gamepad"></i>
+                            <span data-lang-key="game_modes">Multiple Game Modes</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-robot"></i>
+                            <span data-lang-key="difficulty_levels">4 Difficulty Levels</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-users"></i>
+                            <span data-lang-key="online_multiplayer">Online Multiplayer</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://tic-tac-toe.shubchynskyi.pp.ua/" target="_blank" class="btn">
+                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
+                            <span class="status-indicator" data-url="https://tic-tac-toe.shubchynskyi.pp.ua/"></span>
+                        </a>
+                        <a href="https://github.com/shubchynskyi/TicTacToe" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card" id="todo-list">
+                    <h3>Todo List</h3>
+                    <div class="project-description">
+                        <p data-lang-key="todo_description">A simple web application for creating and managing tasks. Uses Spring Boot, JPA (MySQL), Liquibase for migrations.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-tasks"></i>
+                            <span data-lang-key="task_management">Task Management</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-database"></i>
+                            <span data-lang-key="database_storage">Database Storage</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fab fa-docker"></i>
+                            <span>Docker Compose</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://todo-list.shubchynskyi.pp.ua/" target="_blank" class="btn">
+                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
+                            <span class="status-indicator" data-url="https://todo-list.shubchynskyi.pp.ua/"></span>
+                        </a>
+                        <a href="https://github.com/shubchynskyi/todo-list" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2023-2025 Dmytro Shubchynskyi</p>
+        </footer>
+    </div>
+
+    <script src="js/translations.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html> 
