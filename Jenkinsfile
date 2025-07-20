@@ -15,9 +15,9 @@ pipeline {
                 script {
                     sh """
                         docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp -r css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp -r js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp -r img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                        docker cp css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                        docker cp js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                        docker cp img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
                     """
                 }
             }
@@ -38,4 +38,4 @@ pipeline {
             echo 'Deployment failed.'
         }
     }
-} 
+}
