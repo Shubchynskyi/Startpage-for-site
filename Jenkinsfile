@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        WEBSERVER_CONTAINER = 'webserver'
+        WEBSERVER_CONTAINER = credentials('WEBSERVER_CONTAINER')
         NGINX_HTML_PATH = '/usr/share/nginx/html'
     }
     stages {
