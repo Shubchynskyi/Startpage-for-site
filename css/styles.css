@@ -416,13 +416,13 @@ footer {
     }
     
     .language-switcher {
-        position: absolute;
+        position: fixed;
         top: 10px;
         right: 10px;
     }
     
     .theme-switcher {
-        position: absolute;
+        position: fixed;
         bottom: 10px;
         right: 10px;
     }
@@ -439,6 +439,10 @@ footer {
     
     .project-features {
         min-height: 150px;
+    }
+
+    header {
+        padding-top: 60px;
     }
 }
 
