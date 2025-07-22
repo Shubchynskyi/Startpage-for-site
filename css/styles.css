@@ -49,41 +49,30 @@ body {
     padding: 0 20px;
 }
 
-/* Theme Switcher */
+/* Theme Switcher - fixed for all screens */
 .theme-switcher {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: var(--shadow);
+    right: 24px;
+    bottom: 24px;
     z-index: 1000;
-    transition: background-color 0.3s;
+    background: #fff; /* or your color */
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 12px;
+    cursor: pointer;
 }
 
-.theme-switcher:hover {
-    background-color: var(--primary-dark);
-}
-
-/* Language Switcher */
+/* Language Switcher - fixed for all screens */
 .language-switcher {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    left: 0;
     z-index: 1000;
-    background-color: var(--card-background);
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    width: 60px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    width: auto;
+    background: #fff; /* or your color */
+    border-radius: 0 0 8px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 8px 16px;
 }
 
 .current-language {
@@ -457,5 +446,21 @@ footer {
     
     .project-links {
         flex-direction: column;
+    }
+} 
+
+/* Margin for container to prevent language-switcher from overlapping content */
+@media (max-width: 600px) {
+    .container {
+        margin-top: 56px; /* height of language-switcher + small gap */
+    }
+    .language-switcher {
+        padding: 10px 20px;
+        font-size: 1.1em;
+    }
+    .theme-switcher {
+        right: 16px;
+        bottom: 16px;
+        padding: 10px;
     }
 } 
