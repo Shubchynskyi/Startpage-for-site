@@ -29,9 +29,9 @@ body.dark-theme {
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-*,
-*::before,
-*::after {
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -45,9 +45,8 @@ body {
 
 .container {
     max-width: 1200px;
-    width: 100%;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 20px;
 }
 
 /* Theme Switcher */
@@ -417,29 +416,37 @@ footer {
     }
     
     .language-switcher {
-        position: fixed;
-        top: 10px;
-        right: 10px;
+        position: fixed; /* Fixed for mobile */
+        top: 8px;
+        right: 8px;
+        width: 48px;
     }
-    
+    .current-language {
+        padding: 7px 10px;
+        font-size: 0.95rem;
+    }
+    .language-option {
+        padding: 7px 10px;
+        font-size: 0.95rem;
+    }
     .theme-switcher {
-        position: fixed;
+        position: fixed; /* Fixed for mobile */
         bottom: 10px;
         right: 10px;
     }
-    
     .project-card {
         height: auto;
         min-height: 400px;
     }
-    
     .project-description, 
     .project-features {
         height: auto;
     }
-    
     .project-features {
         min-height: 150px;
+    }
+    .profile h1 {
+        margin-top: 18px;
     }
 }
 
