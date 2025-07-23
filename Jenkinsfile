@@ -10,19 +10,20 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Clean & Copy Static Files') {
+        stage('Clean & Deploy Static Files') {
             steps {
-                script {
+                withCredentials([string(credentialsId: 'WEBSERVER_CONTAINER', variable: 'CONTAINER')]) {
                     sh """
-                    docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/*
-                    docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                    docker cp -r css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                    docker cp -r js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                    docker cp -r img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                    docker exec $CONTAINER rm -rf $NGINX_HTML_PATH/*
+                    docker cp index.html $CONTAINER:$NGINX_HTML_PATH/
+                    docker cp css $CONTAINER:$NGINX_HTML_PATH/
+                    docker cp js $CONTAINER:$NGINX_HTML_PATH/
+                    docker cp img $CONTAINER:$NGINX_HTML_PATH/
                     """
                 }
             }
         }
+
 
         stage('Reload Nginx') {
             steps {
