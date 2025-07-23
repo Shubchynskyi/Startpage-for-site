@@ -29,9 +29,9 @@ body.dark-theme {
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
-* {
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
@@ -45,34 +45,46 @@ body {
 
 .container {
     max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 16px;
 }
 
-/* Theme Switcher - fixed for all screens */
+/* Theme Switcher */
 .theme-switcher {
     position: fixed;
-    right: 24px;
-    bottom: 24px;
-    z-index: 1000;
-    background: #fff; /* or your color */
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    transition: background-color 0.3s;
 }
 
-/* Language Switcher - fixed for all screens */
+.theme-switcher:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Language Switcher */
 .language-switcher {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 20px;
+    right: 20px;
     z-index: 1000;
-    width: auto;
-    background: #fff; /* or your color */
-    border-radius: 0 0 8px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    padding: 8px 16px;
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    width: 60px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 .current-language {
@@ -429,10 +441,6 @@ footer {
     .project-features {
         min-height: 150px;
     }
-
-    header {
-        padding-top: 60px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -446,21 +454,5 @@ footer {
     
     .project-links {
         flex-direction: column;
-    }
-} 
-
-/* Margin for container to prevent language-switcher from overlapping content */
-@media (max-width: 600px) {
-    .container {
-        margin-top: 56px; /* height of language-switcher + small gap */
-    }
-    .language-switcher {
-        padding: 10px 20px;
-        font-size: 1.1em;
-    }
-    .theme-switcher {
-        right: 16px;
-        bottom: 16px;
-        padding: 10px;
     }
 } 
