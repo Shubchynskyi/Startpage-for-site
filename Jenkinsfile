@@ -10,22 +10,20 @@ pipeline {
                 checkout scm
             }
         }
-        stage('Copy Static Files to Nginx') {
+        stage('Clean & Copy Static Files') {
             steps {
                 script {
                     sh """
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/css
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/js
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/img
-                        docker exec $WEBSERVER_CONTAINER rm -f $NGINX_HTML_PATH/index.html
-                        docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
-                        docker cp img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                    docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/*
+                    docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                    docker cp -r css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                    docker cp -r js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                    docker cp -r img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
                     """
                 }
             }
         }
+
         stage('Reload Nginx') {
             steps {
                 script {
