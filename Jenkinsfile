@@ -9,23 +9,40 @@ pipeline {
             steps {
                 deleteDir()
                 checkout scm
+                // Show current workspace and files after checkout
+                sh 'echo "[WORKSPACE]" && pwd'
+                sh 'echo "[WORKSPACE CONTENT]" && ls -la'
+                sh 'echo "[CSS DIR]" && ls -la css'
+                sh 'echo "[JS DIR]" && ls -la js'
+                sh 'echo "[IMG DIR]" && ls -la img'
             }
         }
-        stage('Clean & Deploy Static Files') {
+        stage('Copy Static Files to Nginx') {
             steps {
-                withCredentials([string(credentialsId: 'WEBSERVER_CONTAINER', variable: 'CONTAINER')]) {
+                script {
+                    // Show files in container before copy
+                    sh 'echo "[CONTAINER BEFORE COPY]"'
+                    sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"
+                    // Remove old files
                     sh """
-                    docker exec $CONTAINER rm -rf $NGINX_HTML_PATH/*
-                    docker cp index.html $CONTAINER:$NGINX_HTML_PATH/
-                    docker cp css $CONTAINER:$NGINX_HTML_PATH/
-                    docker cp js $CONTAINER:$NGINX_HTML_PATH/
-                    docker cp img $CONTAINER:$NGINX_HTML_PATH/
+                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/css
+                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/js
+                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/img
+                        docker exec $WEBSERVER_CONTAINER rm -f $NGINX_HTML_PATH/index.html
                     """
+                    // Copy new files
+                    sh 'echo "[COPY FILES]"'
+                    sh "docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    sh "docker cp css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    sh "docker cp js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    sh "docker cp img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    // Show files in container after copy
+                    sh 'echo "[CONTAINER AFTER COPY]"'
+                    sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"
+                    sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/css || true"
                 }
             }
         }
-
-
         stage('Reload Nginx') {
             steps {
                 script {
