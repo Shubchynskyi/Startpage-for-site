@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeLanguage();
     
     // Language switcher setup
-    setupLanguageSwitcher();
+    setupLanguageButtons();
+    
+
     
     // Service availability check
     checkServicesAvailability();
@@ -160,6 +162,7 @@ function updateNameTitle(lang) {
  * @param {string} lang - Language code
  */
 function updateLanguageSwitcherDisplay(lang) {
+    const currentLang = document.getElementById('current-lang');
     const langNameMap = {
         'en': 'EN',
         'de': 'DE',
@@ -167,89 +170,46 @@ function updateLanguageSwitcherDisplay(lang) {
         'ua': 'UA'
     };
     
-    const currentLang = document.getElementById('current-language');
-    
     if (currentLang && langNameMap[lang]) {
-        currentLang.textContent = langNameMap[lang];
+        currentLang.querySelector('span').textContent = langNameMap[lang];
     }
 }
 
 /**
- * Sets up language switching on the page
+ * Sets up language dropdown
  */
-function setupLanguageSwitcher() {
-    const languageSwitcher = document.querySelector('.language-switcher');
-    const currentLanguage = document.querySelector('.current-language');
-    const languageOptions = document.querySelectorAll('.language-option');
-    const languageDropdown = document.querySelector('.language-dropdown');
+function setupLanguageButtons() {
+    const currentLang = document.getElementById('current-lang');
+    const options = document.querySelectorAll('.lang-option');
     
-    // Function to check if current viewport is mobile
-    function isMobileView() {
-        return window.innerWidth <= 768;
-    }
-    
-    // Toggle dropdown on current language click
-    currentLanguage.addEventListener('click', function(e) {
+    // Handle current language click
+    currentLang.addEventListener('click', function(e) {
         e.stopPropagation();
-        
-        // If we're in mobile view, always toggle
-        if (isMobileView()) {
-            languageDropdown.classList.toggle('show');
-        } else {
-            // On desktop, only toggle if dropdown is not visible via hover
-            // This prevents conflicts between hover and click
-            setTimeout(() => {
-                if (!languageDropdown.matches(':hover')) {
-                    languageDropdown.classList.toggle('show');
-                }
-            }, 10);
-        }
+        const options = document.querySelector('.lang-options');
+        options.style.display = options.style.display === 'block' ? 'none' : 'block';
     });
     
     // Handle language selection
-    languageOptions.forEach(option => {
-        option.addEventListener('click', function() {
+    options.forEach(option => {
+        option.addEventListener('click', function(e) {
+            e.stopPropagation();
             const lang = this.getAttribute('data-lang');
             setLanguage(lang);
-            // Close dropdown after selection
-            languageDropdown.classList.remove('show');
+            
+            // Close dropdown
+            document.querySelector('.lang-options').style.display = 'none';
         });
     });
     
     // Close dropdown when clicking outside
     document.addEventListener('click', function(e) {
-        if (!languageSwitcher.contains(e.target)) {
-            languageDropdown.classList.remove('show');
+        if (!e.target.closest('.language-dropdown')) {
+            document.querySelector('.lang-options').style.display = 'none';
         }
-    });
-    
-    // Handle window resize - close dropdown when switching between mobile/desktop
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            // Close dropdown when resizing
-            languageDropdown.classList.remove('show');
-        }, 100);
-    });
-    
-    // Add touch support for better mobile experience
-    currentLanguage.addEventListener('touchstart', function(e) {
-        e.preventDefault();
-        if (isMobileView()) {
-            languageDropdown.classList.toggle('show');
-        }
-    });
-    
-    languageOptions.forEach(option => {
-        option.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            const lang = this.getAttribute('data-lang');
-            setLanguage(lang);
-            languageDropdown.classList.remove('show');
-        });
     });
 }
+
+
 
 /**
  * Checks availability of all services and updates status indicators
