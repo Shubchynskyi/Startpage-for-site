@@ -178,12 +178,75 @@ function updateLanguageSwitcherDisplay(lang) {
  * Sets up language switching on the page
  */
 function setupLanguageSwitcher() {
+    const languageSwitcher = document.querySelector('.language-switcher');
+    const currentLanguage = document.querySelector('.current-language');
     const languageOptions = document.querySelectorAll('.language-option');
+    const languageDropdown = document.querySelector('.language-dropdown');
     
+    // Function to check if current viewport is mobile
+    function isMobileView() {
+        return window.innerWidth <= 768;
+    }
+    
+    // Toggle dropdown on current language click
+    currentLanguage.addEventListener('click', function(e) {
+        e.stopPropagation();
+        
+        // If we're in mobile view, always toggle
+        if (isMobileView()) {
+            languageDropdown.classList.toggle('show');
+        } else {
+            // On desktop, only toggle if dropdown is not visible via hover
+            // This prevents conflicts between hover and click
+            setTimeout(() => {
+                if (!languageDropdown.matches(':hover')) {
+                    languageDropdown.classList.toggle('show');
+                }
+            }, 10);
+        }
+    });
+    
+    // Handle language selection
     languageOptions.forEach(option => {
         option.addEventListener('click', function() {
             const lang = this.getAttribute('data-lang');
             setLanguage(lang);
+            // Close dropdown after selection
+            languageDropdown.classList.remove('show');
+        });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!languageSwitcher.contains(e.target)) {
+            languageDropdown.classList.remove('show');
+        }
+    });
+    
+    // Handle window resize - close dropdown when switching between mobile/desktop
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            // Close dropdown when resizing
+            languageDropdown.classList.remove('show');
+        }, 100);
+    });
+    
+    // Add touch support for better mobile experience
+    currentLanguage.addEventListener('touchstart', function(e) {
+        e.preventDefault();
+        if (isMobileView()) {
+            languageDropdown.classList.toggle('show');
+        }
+    });
+    
+    languageOptions.forEach(option => {
+        option.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            const lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+            languageDropdown.classList.remove('show');
         });
     });
 }

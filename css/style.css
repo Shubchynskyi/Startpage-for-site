@@ -101,7 +101,9 @@ body {
     background-color: var(--card-background);
 }
 
-.language-switcher:hover .language-dropdown {
+/* Show dropdown on hover (desktop) OR when .show class is present (mobile) */
+.language-switcher:hover .language-dropdown,
+.language-dropdown.show {
     display: block;
 }
 
@@ -424,11 +426,27 @@ footer {
     .current-language {
         padding: 7px 10px;
         font-size: 0.95rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
     .language-option {
         padding: 7px 10px;
         font-size: 0.95rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
     }
+    
+    /* Completely disable hover on mobile */
+    .language-switcher:hover .language-dropdown {
+        display: none !important;
+    }
+    
+    .language-dropdown.show {
+        display: block !important;
+    }
+    
     .theme-switcher {
         position: fixed; /* Fixed for mobile */
         bottom: 10px;
