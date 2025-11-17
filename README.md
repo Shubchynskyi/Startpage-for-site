@@ -5,7 +5,7 @@ A modern landing page with information about a developer and their projects. Inc
 ## Features
 
 - Responsive design for all devices
-- Multilingual support (English/Russian/German/Ukrainian)
+- Multilingual support (English/German)
 - Browser language auto-detection
 - Dark/light theme toggle
 - Project availability indicators

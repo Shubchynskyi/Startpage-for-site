@@ -35,39 +35,5 @@ const translations = {
         task_management: "Aufgabenverwaltung",
         database_storage: "Datenbankspeicherung",
         open: "Öffnen"
-    },
-    ru: {
-        about_me: "Обо мне",
-        about_text: "Я Java-разработчик с опытом создания веб-приложений на Spring Boot. Моя цель — использовать свои навыки и приверженность для разработки качественного программного обеспечения. Ищу роль Java Software Engineer, где смогу работать над сложными проектами, осваивать новые технологии и развивать свои навыки.",
-        tech_stack: "Технический стек:",
-        my_projects: "Мои проекты",
-        quests_description: "Веб-приложение для создания и прохождения текстовых квестов. Разработано на Java/Spring + Thymeleaf с использованием PostgreSQL.",
-        user_management: "Управление пользователями",
-        quest_creation: "Создание квестов",
-        tictactoe_description: "Веб-игра с адаптивным дизайном для десктопа, планшетов и мобильных устройств. Поддержка PWA для установки на домашний экран.",
-        game_modes: "Несколько режимов игры",
-        difficulty_levels: "4 уровня сложности",
-        online_multiplayer: "Онлайн мультиплеер",
-        todo_description: "Простое веб-приложение для создания и управления задачами. Использует Spring Boot, JPA (MySQL), Liquibase для миграций.",
-        task_management: "Управление задачами",
-        database_storage: "Сохранение в БД",
-        open: "Открыть"
-    },
-    ua: {
-        about_me: "Про мене",
-        about_text: "Я Java-розробник з досвідом створення веб-додатків на Spring Boot. Моя мета — використовувати свої навички та відданість для розробки якісного програмного забезпечення. Шукаю роль Java Software Engineer, де зможу працювати над складними проектами, освоювати нові технології та розвивати свої навички.",
-        tech_stack: "Технічний стек:",
-        my_projects: "Мої проекти",
-        quests_description: "Веб-додаток для створення та проходження текстових квестів. Розроблено на Java/Spring + Thymeleaf з використанням PostgreSQL.",
-        user_management: "Управління користувачами",
-        quest_creation: "Створення квестів",
-        tictactoe_description: "Веб-гра з адаптивним дизайном для десктопа, планшетів і мобільних пристроїв. Підтримка PWA для встановлення на домашній екран.",
-        game_modes: "Кілька режимів гри",
-        difficulty_levels: "4 рівні складності",
-        online_multiplayer: "Онлайн мультиплеєр",
-        todo_description: "Простий веб-додаток для створення та управління завданнями. Використовує Spring Boot, JPA (MySQL), Liquibase для міграцій.",
-        task_management: "Управління завданнями",
-        database_storage: "Збереження в БД",
-        open: "Відкрити"
     }
 }; 

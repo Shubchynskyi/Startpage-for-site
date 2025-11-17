@@ -86,19 +86,24 @@ function initializeLanguage() {
     // Check if user has a saved preference
     let savedLanguage = localStorage.getItem('preferred_language');
     
+    // If saved language exists but is not supported, reset it
+    if (savedLanguage && !translations[savedLanguage]) {
+        savedLanguage = null;
+    }
+    
     // If no saved language, detect browser language
     if (!savedLanguage) {
         const browserLang = navigator.language || navigator.userLanguage;
         
-        // From browserLang (e.g., "ru-RU") take only the first part (e.g., "ru")
+        // From browserLang (e.g., "en-US") take only the first part (e.g., "en")
         const shortLang = browserLang.split('-')[0];
         
-        // Check if this language is supported in our application
-        if (translations[shortLang]) {
-            savedLanguage = shortLang;
-        } else {
-            // If language is not supported, use English as default
+        // If browser language is English, use English
+        if (shortLang === 'en') {
             savedLanguage = 'en';
+        } else {
+            // Otherwise, use German as default
+            savedLanguage = 'de';
         }
     }
     
@@ -113,8 +118,9 @@ function initializeLanguage() {
 function setLanguage(lang) {
     // Check if translations exist for selected language
     if (!translations[lang]) {
-        console.error(`Translations for language "${lang}" not found.`);
-        return;
+        console.error(`Translations for language "${lang}" not found. Using default language.`);
+        // Use German as default if language is not supported
+        lang = 'de';
     }
     
     // Save user preference
@@ -146,9 +152,7 @@ function setLanguage(lang) {
 function updateNameTitle(lang) {
     const nameMap = {
         'en': 'Dmytro Shubchynskyi',
-        'de': 'Dmytro Shubchynskyi',
-        'ru': 'Дмитрий Шубчинский',
-        'ua': 'Дмитро Шубчинський'
+        'de': 'Dmytro Shubchynskyi'
     };
     
     const nameElement = document.querySelector('.profile h1');
@@ -165,9 +169,7 @@ function updateLanguageSwitcherDisplay(lang) {
     const currentLang = document.getElementById('current-lang');
     const langNameMap = {
         'en': 'EN',
-        'de': 'DE',
-        'ru': 'RU',
-        'ua': 'UA'
+        'de': 'DE'
     };
     
     if (currentLang && langNameMap[lang]) {
