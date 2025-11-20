@@ -202,17 +202,6 @@ header {
     background-color: var(--primary-dark);
 }
 
-/* CV link style */
-.cv-link {
-    font-weight: bold;
-    font-size: 0.9rem;
-    animation: cv-pulse 1s ease-in-out 3;
-}
-
-.cv-link span {
-    font-family: 'Roboto', sans-serif;
-}
-
 /* About section */
 .about {
     background-color: var(--card-background);
