@@ -1,2 +1,3 @@
 /.dockerignore
 /nginx.conf
+.idea/

@@ -13,13 +13,19 @@
     <!-- === META TAGS FOR PREVIEW (Open Graph) === -->
     <meta property="og:title" content="Dmytro Shubchynskyi | Java Developer"/>
     <meta property="og:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more."/>
-    <meta property="og:image" content="https://shubchynskyi.pp.ua/img/preview-image.png"/>
-    <meta property="og:url" content="https://shubchynskyi.pp.ua/"/>
     <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://shubchynskyi.pp.ua/"/>
+    <meta property="og:site_name" content="Dmytro Shubchynskyi Portfolio"/>
+    <meta property="og:image" content="https://shubchynskyi.pp.ua/img/preview-image.jpg"/>
+    <meta property="og:image:secure_url" content="https://shubchynskyi.pp.ua/img/preview-image.jpg"/>
+    <meta property="og:image:type" content="image/jpeg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image:alt" content="Dmytro Shubchynskyi - Java Software Engineer"/>
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Dmytro Shubchynskyi | Java Developer">
     <meta name="twitter:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more.">
-    <meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/preview-image.png">
+    <meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/preview-image.jpg">
     <meta name="author" content="Dmytro Shubchynskyi">
     <!-- === END META TAGS FOR PREVIEW === -->
 </head>
@@ -57,17 +63,17 @@
 
         <section class="about">
             <h2 data-lang-key="about_me">About Me</h2>
-            <p data-lang-key="about_text">I am a Java developer with experience in creating web applications with Spring Boot. My goal is to use my skills and commitment to develop high-quality software. I am looking for a Java Software Engineer role where I can work on challenging projects, learn new technologies, and grow my skill set.</p>
+            <p data-lang-key="about_text">I am a Java developer with experience in creating web applications with Spring Boot. My goal is to use my skills and commitment to develop high-quality software. I actively use an AI-assisted workflow in daily development.</p>
             <div class="tech-stack">
                 <h3 data-lang-key="tech_stack">Tech Stack:</h3>
                 <ul>
                     <li>Java Core</li>
-                    <li>Spring (Boot, MVC, JPA)</li>
-                    <li>Thymeleaf, JSP</li>
-                    <li>REST API</li>
-                    <li>MySQL, PostgreSQL</li>
+                    <li>Spring (Boot, MVC, Security, JPA)</li>
+                    <li>REST API, Microservices</li>
+                    <li>MySQL, PostgreSQL, Redis</li>
                     <li>Docker, CI/CD</li>
                     <li>HTML, CSS, JavaScript</li>
+                    <li>AI-Assisted Workflow</li>
                 </ul>
             </div>
         </section>
@@ -75,35 +81,84 @@
         <section class="projects">
             <h2 class="centered-title" data-lang-key="my_projects">My Projects</h2>
             <div class="project-cards">
-                <div class="project-card" id="quests-app">
-                    <h3>Quests Web App</h3>
+                <div class="project-card" id="online-store">
+                    <i class="fas fa-store project-corner-icon" aria-hidden="true"></i>
+                    <h3>Online Store</h3>
                     <div class="project-description">
-                        <p data-lang-key="quests_description">A web application for creating and completing text quests. Built with Java/Spring + Thymeleaf using PostgreSQL.</p>
+                        <p data-lang-key="online_store_description">An e-commerce platform with Spring Boot backend and React frontend, including RabbitMQ messaging and Keycloak-based authentication.</p>
                     </div>
                     <div class="project-features">
                         <div class="feature-tag">
-                            <i class="fas fa-users"></i>
-                            <span data-lang-key="user_management">User Management</span>
+                            <i class="fas fa-store"></i>
+                            <span data-lang-key="product_catalog">Product Catalog</span>
                         </div>
                         <div class="feature-tag">
-                            <i class="fas fa-edit"></i>
-                            <span data-lang-key="quest_creation">Quest Creation</span>
+                            <i class="fas fa-shopping-cart"></i>
+                            <span data-lang-key="order_checkout_flow">Order & Checkout Flow</span>
                         </div>
                         <div class="feature-tag">
-                            <i class="fas fa-cogs"></i>
-                            <span>CI/CD (Jenkins + Docker)</span>
+                            <i class="fas fa-user-cog"></i>
+                            <span data-lang-key="admin_tools">Admin Tools</span>
                         </div>
                     </div>
                     <div class="project-links">
-                        <a href="https://quests-app.shubchynskyi.pp.ua/" target="_blank" class="btn">
-                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
-                            <span class="status-indicator" data-url="https://quests-app.shubchynskyi.pp.ua/"></span>
-                        </a>
-                        <a href="https://github.com/Shubchynskyi/Quest_project/blob/master/Readme.MD" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                        <a href="https://github.com/Shubchynskyi/OnlineStore#readme" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                        <span class="project-dev-status" data-lang-key="in_development">Under Development</span>
+                    </div>
+                </div>
+
+                <div class="project-card" id="agent-orchestrator">
+                    <i class="fab fa-octopus-deploy project-corner-icon" aria-hidden="true"></i>
+                    <h3>Agent Orchestrator</h3>
+                    <div class="project-description">
+                        <p data-lang-key="agent_orchestrator_description">A bootstrap bundle that standardizes AI-agent instructions, entrypoints, and validation scripts for consistent project setup.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-layer-group"></i>
+                            <span data-lang-key="canonical_agent_rules">Canonical Agent Rules</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-route"></i>
+                            <span data-lang-key="multi_assistant_entrypoints">Multi-Assistant Entrypoints</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-shield-alt"></i>
+                            <span data-lang-key="safe_bootstrap_install">Safe Bootstrap Install</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Shubchynskyi/Octopus-agent-orchestrator#readme" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
+                <div class="project-card" id="authentication-service">
+                    <i class="fas fa-user-shield project-corner-icon" aria-hidden="true"></i>
+                    <h3>Authentication Service</h3>
+                    <div class="project-description">
+                        <p data-lang-key="auth_service_description">A full-stack authentication service built with Spring Boot and React, with JWT, OAuth2, RBAC, and admin tools.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-key"></i>
+                            <span data-lang-key="jwt_refresh_auth">JWT + Refresh Tokens</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-user-shield"></i>
+                            <span data-lang-key="rbac_access_control">RBAC + Access Control</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-shield-alt"></i>
+                            <span data-lang-key="rate_limit_account_protection">Rate Limiting & Account Protection</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/Shubchynskyi/Authentication-service#readme" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
                     </div>
                 </div>
 
                 <div class="project-card" id="tic-tac-toe">
+                    <i class="fas fa-gamepad project-corner-icon" aria-hidden="true"></i>
                     <h3>Tic-Tac-Toe Game</h3>
                     <div class="project-description">
                         <p data-lang-key="tictactoe_description">A web-based game with a responsive design for desktops, tablets, and mobile devices. Features PWA support for home screen installation.</p>
@@ -131,7 +186,37 @@
                     </div>
                 </div>
 
+                <div class="project-card" id="quests-app">
+                    <i class="fas fa-scroll project-corner-icon" aria-hidden="true"></i>
+                    <h3>Quests Web App</h3>
+                    <div class="project-description">
+                        <p data-lang-key="quests_description">A web application for creating and completing text quests. Built with Java/Spring + Thymeleaf using PostgreSQL.</p>
+                    </div>
+                    <div class="project-features">
+                        <div class="feature-tag">
+                            <i class="fas fa-users"></i>
+                            <span data-lang-key="user_management">User Management</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-edit"></i>
+                            <span data-lang-key="quest_creation">Quest Creation</span>
+                        </div>
+                        <div class="feature-tag">
+                            <i class="fas fa-cogs"></i>
+                            <span>CI/CD (Jenkins + Docker)</span>
+                        </div>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://quests-app.shubchynskyi.pp.ua/" target="_blank" class="btn">
+                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
+                            <span class="status-indicator" data-url="https://quests-app.shubchynskyi.pp.ua/"></span>
+                        </a>
+                        <a href="https://github.com/Shubchynskyi/Quest_project/blob/master/Readme.MD" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+
                 <div class="project-card" id="todo-list">
+                    <i class="fas fa-square-check project-corner-icon" aria-hidden="true"></i>
                     <h3>Todo List</h3>
                     <div class="project-description">
                         <p data-lang-key="todo_description">A simple web application for creating and managing tasks. Uses Spring Boot, JPA (MySQL), Liquibase for migrations.</p>
