@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        cron('H */6 * * *')
+    }
     environment {
         WEBSERVER_CONTAINER = credentials('WEBSERVER_CONTAINER')
         NGINX_HTML_PATH = '/usr/share/nginx/html'
@@ -15,6 +18,18 @@ pipeline {
                 sh 'echo "[CSS DIR]" && ls -la css'
                 sh 'echo "[JS DIR]" && ls -la js'
                 sh 'echo "[IMG DIR]" && ls -la img'
+                sh 'echo "[DATA DIR]" && ls -la data'
+            }
+        }
+        stage('Refresh GitHub Stats') {
+            steps {
+                sh '''
+                    if command -v node >/dev/null 2>&1; then
+                        node scripts/update-github-stats.js
+                    else
+                        docker run --rm ${GITHUB_TOKEN:+-e GITHUB_TOKEN} -v "$PWD:/workspace" -w /workspace node:24-alpine node scripts/update-github-stats.js
+                    fi
+                '''
             }
         }
         stage('Copy Static Files to Nginx') {
@@ -28,6 +43,7 @@ pipeline {
                         docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/css
                         docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/js
                         docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/img
+                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/data
                         docker exec $WEBSERVER_CONTAINER rm -f $NGINX_HTML_PATH/index.html
                     """
                     // Copy new files
@@ -36,10 +52,12 @@ pipeline {
                     sh "docker cp css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
                     sh "docker cp js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
                     sh "docker cp img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    sh "docker cp data $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
                     // Show files in container after copy
                     sh 'echo "[CONTAINER AFTER COPY]"'
                     sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"
                     sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/css || true"
+                    sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/data || true"
                 }
             }
         }

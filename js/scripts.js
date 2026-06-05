@@ -1,3 +1,5 @@
+const GITHUB_STATS_FALLBACK_URL = 'data/github-stats.json';
+
 document.addEventListener('DOMContentLoaded', function() {
     // Theme initialization
     initializeTheme();
@@ -15,6 +17,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Service availability check
     checkServicesAvailability();
+
+    // GitHub stars badges
+    initializeGitHubStars();
 });
 
 /**
@@ -211,6 +216,122 @@ function setupLanguageButtons() {
     });
 }
 
+
+/**
+ * Initializes GitHub star badges with site fallback values and live refresh.
+ */
+function initializeGitHubStars() {
+    const badges = Array.from(document.querySelectorAll('[data-github-stars-repo]'));
+    if (badges.length === 0) return;
+
+    loadGitHubStatsFallback()
+        .then(fallbackStats => {
+            badges.forEach(badge => {
+                const repo = badge.getAttribute('data-github-stars-repo');
+                if (!repo) return;
+
+                const fallbackCount = getFallbackGitHubStars(fallbackStats, repo);
+                if (Number.isFinite(fallbackCount)) {
+                    renderGitHubStarsBadge(badge, fallbackCount);
+                }
+
+                fetchGitHubStars(repo)
+                    .then(count => renderGitHubStarsBadge(badge, count))
+                    .catch(() => {
+                        if (Number.isFinite(fallbackCount)) {
+                            renderGitHubStarsBadge(badge, fallbackCount);
+                        }
+                    });
+            });
+        });
+}
+
+/**
+ * Fetches star count for a public GitHub repository.
+ * @param {string} repo - GitHub repository in owner/name format
+ * @returns {Promise<number>} - Repository star count
+ */
+function fetchGitHubStars(repo) {
+    return fetch(`https://api.github.com/repos/${repo}`, {
+        cache: 'no-store',
+        headers: {
+            Accept: 'application/vnd.github+json'
+        }
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`GitHub API returned ${response.status}`);
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            const count = data.stargazers_count;
+            if (!Number.isFinite(count)) {
+                throw new Error('GitHub API response did not include stargazers_count');
+            }
+
+            return count;
+        });
+}
+
+/**
+ * Loads site-level fallback GitHub stats.
+ * @returns {Promise<object|null>} - Fallback stats from the deployed site
+ */
+function loadGitHubStatsFallback() {
+    return fetch(GITHUB_STATS_FALLBACK_URL, { cache: 'no-store' })
+        .then(response => {
+            if (!response.ok) {
+                return null;
+            }
+
+            return response.json();
+        })
+        .catch(() => null);
+}
+
+/**
+ * Reads a repository star count from site-level fallback stats.
+ * @param {object|null} fallbackStats - Fallback stats from the deployed site
+ * @param {string} repo - GitHub repository in owner/name format
+ * @returns {number|null} - Fallback star count
+ */
+function getFallbackGitHubStars(fallbackStats, repo) {
+    if (!fallbackStats || !fallbackStats.repositories || !fallbackStats.repositories[repo]) {
+        return null;
+    }
+
+    const count = fallbackStats.repositories[repo].stars;
+    if (!Number.isFinite(count)) {
+        return null;
+    }
+
+    return count;
+}
+
+/**
+ * Updates a GitHub stars badge in the project card.
+ * @param {HTMLElement} badge - Badge element
+ * @param {number} count - Repository star count
+ */
+function renderGitHubStarsBadge(badge, count) {
+    const valueElement = badge.querySelector('[data-github-stars-value]');
+    if (!valueElement || !Number.isFinite(count)) return;
+
+    valueElement.textContent = formatStarCount(count);
+    badge.hidden = false;
+    badge.setAttribute('title', `${count} GitHub stars`);
+}
+
+/**
+ * Formats star count for display.
+ * @param {number} count - Repository star count
+ * @returns {string} - Formatted star count
+ */
+function formatStarCount(count) {
+    return new Intl.NumberFormat(document.documentElement.lang || 'en').format(count);
+}
 
 
 /**
