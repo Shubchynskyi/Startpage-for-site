@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        skipDefaultCheckout(true)
+    }
     triggers {
         cron('H */6 * * *')
     }
@@ -27,7 +30,19 @@ pipeline {
                     if command -v node >/dev/null 2>&1; then
                         node scripts/update-github-stats.js
                     else
-                        docker run --rm ${GITHUB_TOKEN:+-e GITHUB_TOKEN} -v "$PWD:/workspace" -w /workspace node:24-alpine node scripts/update-github-stats.js
+                        container_id="$(docker create ${GITHUB_TOKEN:+-e GITHUB_TOKEN} node:24-alpine node /scripts/update-github-stats.js)"
+                        cleanup() {
+                            docker rm -f "$container_id" >/dev/null 2>&1 || true
+                        }
+                        trap cleanup EXIT
+
+                        docker cp scripts "$container_id:/scripts"
+                        docker cp data "$container_id:/data"
+                        docker start -a "$container_id"
+                        docker cp "$container_id:/data/github-stats.json" data/github-stats.json
+
+                        cleanup
+                        trap - EXIT
                     fi
                 '''
             }
