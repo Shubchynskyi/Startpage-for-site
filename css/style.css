@@ -11,6 +11,9 @@
     --warning-badge-background: #f4d47d;
     --warning-badge-border: #dfbd62;
     --warning-badge-text: #2a220b;
+    --ai-sticker-background: #fff1a8;
+    --ai-sticker-border: #d6bd46;
+    --ai-sticker-text: #403813;
     --danger-color: #dc3545;
     --background-color: #f8f9fa;
     --card-background: #ffffff;
@@ -33,6 +36,9 @@ body.dark-theme {
     --warning-badge-background: #d8b965;
     --warning-badge-border: #bfa454;
     --warning-badge-text: #211b08;
+    --ai-sticker-background: #d8c45f;
+    --ai-sticker-border: #b39d32;
+    --ai-sticker-text: #272207;
 }
 
 * {
@@ -309,6 +315,45 @@ header {
     color: var(--primary-color);
     line-height: 1;
     opacity: 0.9;
+}
+
+.project-ai-sticker {
+    position: absolute;
+    top: -10px;
+    left: 18px;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 9px;
+    border: 1px solid var(--ai-sticker-border);
+    border-radius: 5px;
+    background-color: var(--ai-sticker-background);
+    color: var(--ai-sticker-text);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16);
+    font-size: 0.68rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    transform: rotate(-3deg);
+}
+
+.project-ai-sticker-icon {
+    position: relative;
+    display: inline-flex;
+}
+
+.project-ai-sticker-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -1px;
+    width: calc(100% + 2px);
+    height: 1.5px;
+    border-radius: 2px;
+    background-color: currentColor;
+    transform: rotate(-45deg);
 }
 
 .project-description {

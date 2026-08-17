@@ -1,3 +1,10 @@
 /.dockerignore
 /nginx.conf
 .idea/
+
+# Backup artifacts created by Garda Agent Orchestrator uninstall
+garda-agent-orchestrator-uninstall-backups/
+
+# Local editor and agent configuration
+/.garda-studio/project.json
+/.vscode/settings.json
