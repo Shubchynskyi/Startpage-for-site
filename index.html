@@ -1,283 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dmytro Shubchynskyi | Java Developer</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <!-- === META TAGS FOR PREVIEW (Open Graph) === -->
-    <meta property="og:title" content="Dmytro Shubchynskyi | Java Developer"/>
-    <meta property="og:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more."/>
-    <meta property="og:type" content="website"/>
-    <meta property="og:url" content="https://shubchynskyi.pp.ua/"/>
-    <meta property="og:site_name" content="Dmytro Shubchynskyi Portfolio"/>
-    <meta property="og:image" content="https://shubchynskyi.pp.ua/img/preview-image.jpg"/>
-    <meta property="og:image:secure_url" content="https://shubchynskyi.pp.ua/img/preview-image.jpg"/>
-    <meta property="og:image:type" content="image/jpeg"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="630"/>
-    <meta property="og:image:alt" content="Dmytro Shubchynskyi - Java Software Engineer"/>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dmytro Shubchynskyi | Java Developer">
-    <meta name="twitter:description" content="Portfolio site of Dmytro Shubchynskyi, Java Software Engineer. Explore projects, tech stack, and more.">
-    <meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/preview-image.jpg">
-    <meta name="author" content="Dmytro Shubchynskyi">
-    <!-- === END META TAGS FOR PREVIEW === -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dmytro Shubchynskyi · Software Engineer, Java / Spring</title>
+<meta name="description" content="Portfolio of Dmytro Shubchynskyi: backend applications with Java and Spring Boot, and developer tools for AI-assisted work.">
+<meta name="author" content="Dmytro Shubchynskyi">
+<link rel="canonical" href="https://shubchynskyi.pp.ua/">
+<link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/">
+<link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/">
+<link rel="alternate" hreflang="x-default" href="https://shubchynskyi.pp.ua/">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dmytro Shubchynskyi">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:url" content="https://shubchynskyi.pp.ua/">
+<meta property="og:title" content="Dmytro Shubchynskyi · Software Engineer, Java / Spring">
+<meta property="og:description" content="Portfolio of Dmytro Shubchynskyi: backend applications with Java and Spring Boot, and developer tools for AI-assisted work.">
+<meta property="og:image" content="https://shubchynskyi.pp.ua/img/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dmytro Shubchynskyi, Software Engineer · Java / Spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Dmytro Shubchynskyi · Software Engineer, Java / Spring">
+<meta name="twitter:description" content="Portfolio of Dmytro Shubchynskyi: backend applications with Java and Spring Boot, and developer tools for AI-assisted work.">
+<meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/og-en.jpg">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script>(function(){var s=null;try{s=localStorage.getItem('lang');}catch(e){}if(s==='en')return;if(s==='de'){location.replace('/de/');return;}var l=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en'];for(var i=0;i<l.length;i++){var c=String(l[i]).toLowerCase().slice(0,2);if(c==='en')return;if(c==='de'){location.replace('/de/');return;}}})();</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Dmytro Shubchynskyi", "jobTitle": "Software Engineer", "url": "https://shubchynskyi.pp.ua/", "email": "mailto:d.shubchynskyi@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Aschaffenburg", "addressCountry": "DE"}, "knowsAbout": ["Java", "Spring Boot", "Spring Security", "PostgreSQL", "Testcontainers", "AI-assisted software development"], "sameAs": ["https://github.com/Shubchynskyi", "https://www.linkedin.com/in/shubchynskyi/"]}</script>
+<script src="/js/site.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container">
+<a class="brand" href="/">Dmytro Shubchynskyi</a>
+<nav class="site-nav" aria-label="Main">
+<a href="#projects">Projects</a>
+<a href="#how">How I work</a>
+<a href="#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<div class="lang-switch" role="group" aria-label="Language">
+<a href="/" hreflang="en" lang="en" data-lang-link="en" aria-current="true">EN</a>
+<a href="/de/" hreflang="de" lang="de" data-lang-link="de">DE</a>
+</div>
+<button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark theme"><svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+<a class="cv-button" href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf" aria-label="Download CV (PDF)"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>CV</span></a>
+<details class="menu">
+<summary class="icon-button" aria-label="Menu"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav class="menu-panel" aria-label="Menu">
+<a href="#projects">Projects</a>
+<a href="#how">How I work</a>
+<a href="#contact">Contact</a>
+<a href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf">Download CV (PDF)</a>
+</nav>
+</details>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title">
+<div class="container">
+<div class="hero-text">
+<p class="eyebrow">Software Engineer · Java / Spring</p>
+<h1 id="hero-title">I build backend applications with Java and Spring&nbsp;Boot <span class="soft">and developer tools for AI-assisted work.</span></h1>
+<p class="availability">Open to Java / Spring roles in Germany · AI-assisted development</p>
+</div>
+<div class="hero-actions">
+<a class="button button-primary" href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>Download CV</span></a>
+<a class="button button-outline button-square" href="https://github.com/Shubchynskyi" aria-label="GitHub"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+<a class="button button-outline button-square" href="https://www.linkedin.com/in/shubchynskyi/" aria-label="LinkedIn"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+<a class="button button-outline button-square" href="mailto:d.shubchynskyi@gmail.com" aria-label="E-mail"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a>
+</div>
+</div>
+</section>
 
+<section id="projects" class="container" aria-labelledby="projects-title">
+<div class="section-head projects-head">
+<h2 id="projects-title">Projects</h2>
+<a class="link-arrow" href="https://github.com/Shubchynskyi?tab=repositories"><span>All repositories on GitHub</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</div>
+<div class="featured-grid">
+<article class="card" aria-labelledby="garda-title">
+<figure class="card-visual">
+<figcaption><span class="label">garda ui · Garda building itself</span><span class="cmd">$ garda ui</span></figcaption>
+<img class="shot only-light" src="/img/projects/garda-ui-card-light.webp" width="1058" height="680" alt="Garda UI task detail from the Garda repository: a task in progress with its event, gate and full-suite counters" loading="eager" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-card-dark.webp" width="1058" height="680" alt="Garda UI task detail from the Garda repository: a task in progress with its event, gate and full-suite counters" loading="eager" decoding="async">
+</figure>
+<div class="card-body">
+<div class="card-title-row">
+<div class="card-title"><p class="label">Open source · Apache-2.0</p><h3 id="garda-title">Garda Agent Orchestrator</h3></div>
+<a class="stars" href="https://github.com/Garda-Studio/garda-agent-orchestrator/stargazers" data-github-stars="Garda-Studio/garda-agent-orchestrator"><span class="stars-count"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></svg><span data-stars-value>27</span></span><span class="stars-label">GitHub stars</span></a>
+</div>
+<p>A CLI that puts AI coding agents on one governed path to done: a task lifecycle, mandatory gates, required reviews and an auditable history. Works with Claude, Codex, Copilot, Gemini and other agents.</p>
+<ul class="chips"><li class="key">TypeScript</li><li class="key">Node.js</li><li>CLI</li><li>npm</li></ul>
+<div class="card-actions">
+<a class="button button-ink" href="/projects/garda/"><span>Case study</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<a href="https://github.com/Garda-Studio/garda-agent-orchestrator">GitHub</a>
+<a href="https://garda-studio.com/products/cli">Website</a>
+<a href="https://www.youtube.com/watch?v=1J74BDu1sEI">2-minute demo</a>
+</div>
+</div>
+</article>
+<article class="card" aria-labelledby="auth-title">
+<figure class="card-visual">
+<figcaption><span class="label">Session refresh, simplified</span></figcaption>
+<div class="seq">
+<div class="seq-lifeline l1"></div><div class="seq-lifeline l2"></div><div class="seq-lifeline l3"></div>
+<div class="seq-lanes"><span>React app</span><span class="server">Spring Boot API</span><span>PostgreSQL</span></div>
+<div class="seq-row note"><div class="seq-note">access token expired<br>15 min, in memory</div></div>
+<div class="seq-row tall"><div class="seq-label l12"><b>POST refresh</b><small>httpOnly cookie + CSRF</small></div><div class="seq-arrow a12"></div></div>
+<div class="seq-row short"><div class="seq-label l23">find by hash, rotate</div><div class="seq-arrow a23"></div></div>
+<div class="seq-row tall"><div class="seq-label l12"><b>new access token</b><small>+ rotated cookie, 7 days</small></div><div class="seq-arrow a21"></div></div>
+</div>
+<ol class="seq-steps"><li><span class="lane">React → API</span><span>POST refresh with the httpOnly cookie and a CSRF token</span></li><li><span class="lane">API → PostgreSQL</span><span>Find the token by its SHA-256 hash and rotate it</span></li><li><span class="lane">API → React</span><span>New access token and a rotated cookie for 7 days</span></li></ol>
+<p class="seq-alert"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span><b>Reuse detected:</b> a retired token comes back, so its whole token family is revoked.</span></p>
+</figure>
+<div class="card-body">
+<div class="card-title"><p class="label">Full-stack · v1.0.0</p><h3 id="auth-title">Authentication Service</h3></div>
+<p>Registration, login and user management for web apps: JWT sessions with rotating refresh tokens, Google sign-in, roles, rate limits and an admin panel. Integration tests run on real PostgreSQL.</p>
+<ul class="chips"><li class="key">Java 25</li><li class="key">Spring Boot 4</li><li class="key">Spring Security</li><li class="key">PostgreSQL</li><li>React</li><li>Testcontainers</li></ul>
+<div class="card-actions">
+<a class="button button-ink" href="/projects/auth-service/"><span>Case study</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+<a href="https://github.com/Shubchynskyi/Authentication-service">GitHub</a>
+</div>
+</div>
+</article>
+</div>
 
-    <div class="language-dropdown">
-        <button class="lang-current" id="current-lang">
-            <span>EN</span>
-            <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="lang-options">
-            <div class="lang-option" data-lang="en">EN</div>
-            <div class="lang-option" data-lang="de">DE</div>
-        </div>
-    </div>
+<div class="section-head" style="margin: 56px 0 20px">
+<h2 style="font-size: 20px">Early projects</h2>
+<p style="font-size: 14.5px; color: var(--muted)">Written by hand while I was learning Java, before AI tools joined my workflow.</p>
+</div>
+<div class="early-grid">
+<article class="mini">
+<img src="/img/projects/thumb-ttt.webp" width="640" height="400" alt="Tic-Tac-Toe start screen with nickname, game mode, symbol and difficulty" loading="lazy" decoding="async">
+<div class="mini-body">
+<h3>Tic-Tac-Toe</h3>
+<p>Browser game with a computer opponent on four levels, online multiplayer and PWA install.</p>
+<p class="meta">Spring Boot · WebSocket · 2025</p>
+<div class="mini-links"><a href="https://tic-tac-toe.shubchynskyi.pp.ua/">Play</a><a href="https://github.com/Shubchynskyi/TicTacToe">Code</a></div>
+</div>
+</article>
+<article class="mini">
+<img src="/img/projects/thumb-quests.webp" width="640" height="400" alt="Quests Web App home page with navigation and a short project description" loading="lazy" decoding="async">
+<div class="mini-body">
+<h3>Quests Web App</h3>
+<p>Create and play text quests, with user roles and a quest editor.</p>
+<p class="meta">Spring · Thymeleaf · PostgreSQL · 2023</p>
+<div class="mini-links"><a href="https://quests-app.shubchynskyi.pp.ua/">Open</a><a href="https://github.com/Shubchynskyi/Quest_project">Code</a></div>
+</div>
+</article>
+<article class="mini">
+<img src="/img/projects/thumb-todo.webp" width="640" height="400" alt="Todo List table with tasks, statuses and edit and delete buttons" loading="lazy" decoding="async">
+<div class="mini-body">
+<h3>Todo List</h3>
+<p>Task manager with database migrations and a Docker Compose setup.</p>
+<p class="meta">Spring Boot · MySQL · Liquibase · 2023</p>
+<div class="mini-links"><a href="https://todo-list.shubchynskyi.pp.ua/">Open</a><a href="https://github.com/Shubchynskyi/TodoList">Code</a></div>
+</div>
+</article>
+</div>
+</section>
 
-    <div class="theme-switcher" id="theme-toggle">
-        <i class="fas fa-moon" id="theme-icon"></i>
-    </div>
+<section id="how" class="container section" aria-labelledby="how-title">
+<h2 id="how-title" style="font-size: 24px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 28px">How I work</h2>
+<div class="principles">
+<div class="principle"><h3><span>01</span>Tests decide</h3><p>Integration tests run against real databases in Testcontainers. A change is done when the tests say so.</p></div>
+<div class="principle"><h3><span>02</span>AI agents, with gates</h3><p>I use coding agents every day. They implement, I review the diff, and compile and tests have the last word. Garda grew out of this.</p></div>
+<div class="principle"><h3><span>03</span>Shipping included</h3><p>Docker, Jenkins pipelines and my own server. This site is deployed the same way.</p></div>
+</div>
+</section>
 
-    <div class="container">
-        <header>
-            <div class="profile">
-                <h1>Dmytro Shubchynskyi</h1>
-                <h2>Java Software Engineer</h2>
-                <div class="social-links">
-                    <a href="https://github.com/shubchynskyi" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/shubchynskyi/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="mailto:d.shubchynskyi@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://wa.me/+491754015229" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-        </header>
-
-        <section class="about">
-            <h2 data-lang-key="about_me">About Me</h2>
-            <p data-lang-key="about_text">I am a Java developer with experience in creating web applications with Spring Boot. My goal is to use my skills and commitment to develop high-quality software. I actively use an AI-assisted workflow in daily development.</p>
-            <div class="tech-stack">
-                <h3 data-lang-key="tech_stack">Tech Stack:</h3>
-                <ul>
-                    <li>Java Core</li>
-                    <li>Spring (Boot, MVC, Security, JPA)</li>
-                    <li>REST API, Microservices</li>
-                    <li>MySQL, PostgreSQL, Redis</li>
-                    <li>Docker, CI/CD</li>
-                    <li>HTML, CSS, JavaScript</li>
-                    <li>AI-Assisted Workflow</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="projects">
-            <h2 class="centered-title" data-lang-key="my_projects">My Projects</h2>
-            <div class="project-cards">
-                <div class="project-card" id="agent-orchestrator">
-                    <i class="fab fa-octopus-deploy project-corner-icon" aria-hidden="true"></i>
-                    <h3>Garda Agent Workflow</h3>
-                    <div class="project-description">
-                        <p data-lang-key="agent_orchestrator_description">An open-source AI-assisted development workflow with guarded task routing, rule packs, reviews, and validation gates.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-route"></i>
-                            <span data-lang-key="guarded_task_routing">Guarded Task Routing</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-layer-group"></i>
-                            <span data-lang-key="agent_rule_packs">Agent Rule Packs</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-shield-alt"></i>
-                            <span data-lang-key="review_validation_gates">Review & Validation Gates</span>
-                        </div>
-                    </div>
-                    <div class="project-links project-links-with-badges">
-                        <a href="https://garda-workflow.netlify.app/" target="_blank" class="btn">
-                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
-                            <span class="status-indicator" data-url="https://garda-workflow.netlify.app/"></span>
-                        </a>
-                        <a href="https://github.com/Shubchynskyi/garda-agent-orchestrator#readme" target="_blank" class="btn github-link-with-stars">
-                            <i class="fab fa-github"></i> GitHub
-                            <span class="github-stars-inline" data-github-stars-repo="Shubchynskyi/garda-agent-orchestrator" hidden>
-                                <i class="fas fa-star" aria-hidden="true"></i>
-                                <span data-github-stars-value></span>
-                            </span>
-                        </a>
-                        <span class="project-status-badge project-status-badge-highlight">
-                            <i class="fas fa-code-branch" aria-hidden="true"></i>
-                            <span data-lang-key="open_source_under_development_status">Open Source / Under Development</span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="project-card" id="online-store">
-                    <i class="fas fa-store project-corner-icon" aria-hidden="true"></i>
-                    <h3>Online Store</h3>
-                    <div class="project-description">
-                        <p data-lang-key="online_store_description">An e-commerce platform with Spring Boot backend and React frontend, including RabbitMQ messaging and Keycloak-based authentication.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-store"></i>
-                            <span data-lang-key="product_catalog">Product Catalog</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span data-lang-key="order_checkout_flow">Order & Checkout Flow</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-user-cog"></i>
-                            <span data-lang-key="admin_tools">Admin Tools</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Shubchynskyi/OnlineStore#readme" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                        <span class="project-dev-status" data-lang-key="in_development">Under Development</span>
-                    </div>
-                </div>
-
-                <div class="project-card" id="authentication-service">
-                    <i class="fas fa-user-shield project-corner-icon" aria-hidden="true"></i>
-                    <h3>Authentication Service</h3>
-                    <div class="project-description">
-                        <p data-lang-key="auth_service_description">A full-stack authentication service built with Spring Boot and React, with JWT, OAuth2, RBAC, and admin tools.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-key"></i>
-                            <span data-lang-key="jwt_refresh_auth">JWT + Refresh Tokens</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-user-shield"></i>
-                            <span data-lang-key="rbac_access_control">RBAC + Access Control</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-shield-alt"></i>
-                            <span data-lang-key="rate_limit_account_protection">Rate Limiting & Account Protection</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/Shubchynskyi/Authentication-service#readme" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-
-                <div class="project-card" id="tic-tac-toe">
-                    <i class="fas fa-gamepad project-corner-icon" aria-hidden="true"></i>
-                    <span class="project-ai-sticker">
-                        <span class="project-ai-sticker-icon" aria-hidden="true"><i class="fas fa-robot"></i></span>
-                        <span data-lang-key="built_without_ai">NO AI</span>
-                    </span>
-                    <h3>Tic-Tac-Toe Game</h3>
-                    <div class="project-description">
-                        <p data-lang-key="tictactoe_description">A web-based game with a responsive design for desktops, tablets, and mobile devices. Features PWA support for home screen installation.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-gamepad"></i>
-                            <span data-lang-key="game_modes">Multiple Game Modes</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-robot"></i>
-                            <span data-lang-key="difficulty_levels">4 Difficulty Levels</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-users"></i>
-                            <span data-lang-key="online_multiplayer">Online Multiplayer</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://tic-tac-toe.shubchynskyi.pp.ua/" target="_blank" class="btn">
-                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
-                            <span class="status-indicator" data-url="https://tic-tac-toe.shubchynskyi.pp.ua/"></span>
-                        </a>
-                        <a href="https://github.com/Shubchynskyi/TicTacToe/blob/master/Readme.md" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-
-                <div class="project-card" id="quests-app">
-                    <i class="fas fa-scroll project-corner-icon" aria-hidden="true"></i>
-                    <span class="project-ai-sticker">
-                        <span class="project-ai-sticker-icon" aria-hidden="true"><i class="fas fa-robot"></i></span>
-                        <span data-lang-key="built_without_ai">NO AI</span>
-                    </span>
-                    <h3>Quests Web App</h3>
-                    <div class="project-description">
-                        <p data-lang-key="quests_description">A web application for creating and completing text quests. Built with Java/Spring + Thymeleaf using PostgreSQL.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-users"></i>
-                            <span data-lang-key="user_management">User Management</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-edit"></i>
-                            <span data-lang-key="quest_creation">Quest Creation</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-cogs"></i>
-                            <span>CI/CD (Jenkins + Docker)</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://quests-app.shubchynskyi.pp.ua/" target="_blank" class="btn">
-                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
-                            <span class="status-indicator" data-url="https://quests-app.shubchynskyi.pp.ua/"></span>
-                        </a>
-                        <a href="https://github.com/Shubchynskyi/Quest_project/blob/master/Readme.MD" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-
-                <div class="project-card" id="todo-list">
-                    <i class="fas fa-square-check project-corner-icon" aria-hidden="true"></i>
-                    <span class="project-ai-sticker">
-                        <span class="project-ai-sticker-icon" aria-hidden="true"><i class="fas fa-robot"></i></span>
-                        <span data-lang-key="built_without_ai">NO AI</span>
-                    </span>
-                    <h3>Todo List</h3>
-                    <div class="project-description">
-                        <p data-lang-key="todo_description">A simple web application for creating and managing tasks. Uses Spring Boot, JPA (MySQL), Liquibase for migrations.</p>
-                    </div>
-                    <div class="project-features">
-                        <div class="feature-tag">
-                            <i class="fas fa-tasks"></i>
-                            <span data-lang-key="task_management">Task Management</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fas fa-database"></i>
-                            <span data-lang-key="database_storage">Database Storage</span>
-                        </div>
-                        <div class="feature-tag">
-                            <i class="fab fa-docker"></i>
-                            <span>Docker Compose</span>
-                        </div>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://todo-list.shubchynskyi.pp.ua/" target="_blank" class="btn">
-                            <i class="fas fa-globe"></i> <span data-lang-key="open">Open</span>
-                            <span class="status-indicator" data-url="https://todo-list.shubchynskyi.pp.ua/"></span>
-                        </a>
-                        <a href="https://github.com/Shubchynskyi/TodoList/blob/master/Readme.md" target="_blank" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer>
-            <p>© 2023-2025 Dmytro Shubchynskyi</p>
-        </footer>
-    </div>
-
-    <script src="js/translations.js"></script>
-    <script src="js/scripts.js"></script>
+<section id="contact" class="container section" aria-labelledby="contact-title">
+<div class="contact">
+<div class="contact-text">
+<h2 id="contact-title">Let's talk</h2>
+<p>Open to Java / Spring roles in Germany, especially in teams that build with AI coding agents. Email is the fastest way to reach me.</p>
+<a class="contact-mail" href="mailto:d.shubchynskyi@gmail.com">d.shubchynskyi@gmail.com</a>
+<div class="contact-socials"><a href="https://www.linkedin.com/in/shubchynskyi/">LinkedIn</a><a href="https://github.com/Shubchynskyi">GitHub</a></div>
+</div>
+<div class="contact-cv">
+<a class="cv-link primary" href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf" hreflang="en"><span>CV · English · PDF</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></a>
+<a class="cv-link" href="/cv/Dmytro-Shubchynskyi-Lebenslauf-DE.pdf" hreflang="de"><span>Lebenslauf · Deutsch · PDF</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg></a>
+<a class="cv-text-link" href="/cv/Dmytro-Shubchynskyi-CV-EN-text.pdf">Plain-text CV for applicant tracking systems</a>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<span>© 2026 Dmytro Shubchynskyi</span>
+<span><a href="https://github.com/Shubchynskyi">GitHub</a> · <a href="https://www.linkedin.com/in/shubchynskyi/">LinkedIn</a></span>
+</div>
+</footer>
 </body>
-</html> 
+</html>

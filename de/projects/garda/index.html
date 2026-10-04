@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garda Agent Orchestrator · Fallstudie · Dmytro Shubchynskyi</title>
+<meta name="description" content="Fallstudie: Garda Agent Orchestrator, ein Open-Source-CLI, das KI-Coding-Agenten einen kontrollierten Weg von der Aufgabe bis „fertig“ gibt, mit Pflicht-Gates, verbindlichen Reviews und Audit-Trail.">
+<meta name="author" content="Dmytro Shubchynskyi">
+<link rel="canonical" href="https://shubchynskyi.pp.ua/de/projects/garda/">
+<link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/garda/">
+<link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/garda/">
+<link rel="alternate" hreflang="x-default" href="https://shubchynskyi.pp.ua/projects/garda/">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dmytro Shubchynskyi">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://shubchynskyi.pp.ua/de/projects/garda/">
+<meta property="og:title" content="Garda Agent Orchestrator · Fallstudie · Dmytro Shubchynskyi">
+<meta property="og:description" content="Fallstudie: Garda Agent Orchestrator, ein Open-Source-CLI, das KI-Coding-Agenten einen kontrollierten Weg von der Aufgabe bis „fertig“ gibt, mit Pflicht-Gates, verbindlichen Reviews und Audit-Trail.">
+<meta property="og:image" content="https://shubchynskyi.pp.ua/img/og-de.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dmytro Shubchynskyi, Software Engineer · Java / Spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Garda Agent Orchestrator · Fallstudie · Dmytro Shubchynskyi">
+<meta name="twitter:description" content="Fallstudie: Garda Agent Orchestrator, ein Open-Source-CLI, das KI-Coding-Agenten einen kontrollierten Weg von der Aufgabe bis „fertig“ gibt, mit Pflicht-Gates, verbindlichen Reviews und Audit-Trail.">
+<meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/og-de.jpg">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script src="/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="site-header">
+<div class="container">
+<a class="brand" href="/de/">Dmytro Shubchynskyi</a>
+<nav class="site-nav" aria-label="Hauptnavigation">
+<a href="/de/#projects">Projekte</a>
+<a href="/de/#how">Wie ich arbeite</a>
+<a href="/de/#contact">Kontakt</a>
+</nav>
+<div class="header-actions">
+<div class="lang-switch" role="group" aria-label="Sprache">
+<a href="/projects/garda/" hreflang="en" lang="en" data-lang-link="en">EN</a>
+<a href="/de/projects/garda/" hreflang="de" lang="de" data-lang-link="de" aria-current="true">DE</a>
+</div>
+<button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Zwischen hellem und dunklem Design wechseln"><svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+<a class="cv-button" href="/cv/Dmytro-Shubchynskyi-Lebenslauf-DE.pdf" aria-label="Lebenslauf herunterladen (PDF)"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>CV</span></a>
+<details class="menu">
+<summary class="icon-button" aria-label="Menü"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav class="menu-panel" aria-label="Menü">
+<a href="/de/#projects">Projekte</a>
+<a href="/de/#how">Wie ich arbeite</a>
+<a href="/de/#contact">Kontakt</a>
+<a href="/cv/Dmytro-Shubchynskyi-Lebenslauf-DE.pdf">Lebenslauf herunterladen (PDF)</a>
+</nav>
+</details>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="container" aria-labelledby="case-title">
+<a class="back-link" href="/de/#projects"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>Alle Projekte</span></a>
+<div class="case-hero">
+<p class="eyebrow">Fallstudie · Open Source · Apache-2.0</p>
+<h1 id="case-title">Garda Agent Orchestrator</h1>
+<p>Ein lokales CLI, das KI-Coding-Agenten einen kontrollierten Weg von der Aufgabe bis „fertig“ gibt. Ich habe es konzipiert und entwickle es, und Garda wird mit Garda entwickelt: Die eigene Aufgabenliste läuft durch dieselben Gates.</p>
+</div>
+<dl class="case-meta"><div><dt class="label">Rolle</dt><dd>Autor und Maintainer</dd></div><div><dt class="label">Stack</dt><dd>TypeScript, Node.js 24, npm-Paket</dd></div><div><dt class="label">Funktioniert mit</dt><dd>Claude, Codex, Copilot, Gemini und weiteren Agenten</dd></div><div><dt class="label">Links</dt><dd><a href="https://github.com/Garda-Studio/garda-agent-orchestrator">GitHub</a> · <a href="https://garda-studio.com/products/cli">Website</a> · <a href="https://www.youtube.com/watch?v=1J74BDu1sEI">Demo</a></dd></div></dl>
+</section>
+
+<section class="container case-section" aria-labelledby="problem-title">
+<div class="split">
+<div class="split-text">
+<h2 id="problem-title">Das Problem</h2>
+<p>Coding-Agenten sind schnell, aber in echten Repositories überspringen sie Schritte, verlieren Kontext, umgehen Reviews und erklären Arbeit zu früh für fertig.</p><p>Sie um Sorgfalt zu bitten, skaliert nicht über Agenten, Sessions und Projekte. Die Reihenfolge der Prüfungen muss außerhalb des Agenten liegen.</p>
+</div>
+<div class="split-text">
+<h2>Ein Weg bis „fertig“</h2>
+<p>Jede Aufgabe durchläuft dieselben Gates in derselben Reihenfolge. <code>garda next-step</code> gibt genau den Befehl aus, der als Nächstes erlaubt ist; die Reihenfolge hängt also nie davon ab, ob sich der Agent daran erinnert.</p>
+<p class="label">Aufgaben-Lebenszyklus</p>
+<ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol>
+<p class="label">Gates, in Reihenfolge</p>
+<ol class="pipeline"><li>enter-task-mode</li><li class="sep" aria-hidden="true">→</li><li>load-rule-pack</li><li class="sep" aria-hidden="true">→</li><li>preflight</li><li class="sep" aria-hidden="true">→</li><li>compile</li><li class="sep" aria-hidden="true">→</li><li>review-context</li><li class="sep" aria-hidden="true">→</li><li>required reviews</li><li class="sep" aria-hidden="true">→</li><li>doc-impact</li><li class="sep" aria-hidden="true">→</li><li class="done">completion</li></ol>
+</div>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="self-title">
+<div class="split">
+<div class="split-text">
+<p class="label">$ garda ui</p>
+<h2 id="self-title">Garda entwickelt Garda</h2>
+<p>Eine echte Aufgabe aus Gardas eigener Liste, geöffnet in <code>garda ui</code>. Jedes Gate hinterlässt ein Ereignis: Die Schrittanzeige zeigt, welche Stufen bestanden sind, welche gerade läuft und was noch aussteht. Bei der Aufnahme wartete die Aufgabe auf einen unabhängigen Reviewer, daher steht dort Blocked.</p>
+</div>
+<figure class="split-media shot-frame narrow">
+<img class="shot only-light" src="/img/projects/garda-ui-overview-light.webp" width="1058" height="2352" alt="Garda UI mit Aufgabendetails: Zähler für Ereignisse, bestandene und fehlgeschlagene Gates, Ergebnis der Testsuite und geänderte Zeilen, darunter abgeschlossene, aktuelle und verbleibende Stufen" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-overview-dark.webp" width="1058" height="2352" alt="Garda UI mit Aufgabendetails: Zähler für Ereignisse, bestandene und fehlgeschlagene Gates, Ergebnis der Testsuite und geänderte Zeilen, darunter abgeschlossene, aktuelle und verbleibende Stufen" loading="lazy" decoding="async">
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="decisions-title">
+<h2 id="decisions-title" style="margin-bottom: 32px">Entscheidungen, auf die es ankommt</h2>
+<div class="tiles"><div class="tile"><h3>Fertig ist ein Gate, keine Behauptung</h3><p>Eine Aufgabe wird erst DONE, wenn das Completion-Gate die Nachweise akzeptiert: Compile, verbindliche Reviews und Doc-Impact. Der eigene Bericht des Agenten zählt nicht.</p></div><div class="tile"><h3>Reviews dort, wo der Umfang es verlangt</h3><p>Spezialisierte Reviews für Code, Datenbank, Sicherheit, API, Tests, Performance, Infrastruktur, Refactoring und Abhängigkeiten laufen, wenn die Änderung ihren Bereich berührt.</p></div><div class="tile"><h3>Ein überprüfbarer Audit-Trail</h3><p>Jeder Schritt ist ein Ereignis in einem hash-verketteten Log, und Reviews hinterlassen Artefakte. Man sieht, was geprüft wurde, von wem und wann.</p></div><div class="tile"><h3>Sparsam mit Tokens</h3><p>Reviewer bekommen kompakten Kontext und eingegrenzte Diffs, und Gate-Ausgaben werden gefiltert, damit ein grüner Durchlauf kurz bleibt.</p></div></div>
+</section>
+
+<section class="container case-section" aria-labelledby="config-title">
+<h2 id="config-title">Konfigurierbar statt fest verdrahtet</h2>
+<p class="case-lead">Profile legen die Tiefe einer Aufgabe fest, von schnell bis streng. Qualitätsregeln, Review-Reihenfolge, Umfangsgrenzen und geschützte Steuerungen liegen in der Konfiguration und sind in der Oberfläche sichtbar.</p>
+<div class="tiles">
+<figure class="split-media shot-frame">
+<img class="shot only-light" src="/img/projects/garda-ui-profiles-light.webp" width="1600" height="739" alt="Garda UI, Reiter Profile mit den eingebauten Profilen balanced, fast, strict und docs-only" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-profiles-dark.webp" width="1600" height="739" alt="Garda UI, Reiter Profile mit den eingebauten Profilen balanced, fast, strict und docs-only" loading="lazy" decoding="async">
+<figcaption>Profile: eingebaut balanced, fast, strict und docs-only, dazu eigene.</figcaption>
+</figure>
+<figure class="split-media shot-frame">
+<img class="shot only-light" src="/img/projects/garda-ui-quality-gate-light.webp" width="1600" height="739" alt="Garda UI, Reiter Quality Gate mit dem Stand des Regelpakets und eigenen Qualitätsregeln" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-quality-gate-dark.webp" width="1600" height="739" alt="Garda UI, Reiter Quality Gate mit dem Stand des Regelpakets und eigenen Qualitätsregeln" loading="lazy" decoding="async">
+<figcaption>Quality Gate: installiertes Regelpaket und eigene Regeln.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="try-title">
+<div class="split">
+<div class="split-text">
+<h2 id="try-title">Ausprobieren</h2>
+<p>Node.js 24 LTS oder 22.13+ und Git. Öffnen Sie ein Terminal im Repository, das Garda verwalten soll:</p>
+<p>Danach geben Sie dem Coding-Agenten die erzeugte <code>AGENT_INIT_PROMPT.md</code> und wählen eine Aufgabe aus <code>TASK.md</code>.</p>
+</div>
+<div class="split-media">
+<div class="terminal"><div><span class="prompt">$</span> npm install -g garda-agent-orchestrator</div><div><span class="prompt">$</span> garda setup</div><div><span class="prompt">$</span> garda ui</div></div>
+</div>
+</div>
+</section>
+
+<section class="container case-section" aria-label="Nächste Fallstudie">
+<a class="next-case" href="/de/projects/auth-service/"><span><span class="label">Nächste Fallstudie</span><strong>Authentication Service</strong></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<span>© 2026 Dmytro Shubchynskyi</span>
+<span><a href="https://github.com/Shubchynskyi">GitHub</a> · <a href="https://www.linkedin.com/in/shubchynskyi/">LinkedIn</a></span>
+</div>
+</footer>
+</body>
+</html>

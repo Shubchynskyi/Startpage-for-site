@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garda Agent Orchestrator · Case study · Dmytro Shubchynskyi</title>
+<meta name="description" content="Case study: Garda Agent Orchestrator, an open-source CLI that gives AI coding agents a governed path from task to done, with mandatory gates, required reviews and an audit trail.">
+<meta name="author" content="Dmytro Shubchynskyi">
+<link rel="canonical" href="https://shubchynskyi.pp.ua/projects/garda/">
+<link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/garda/">
+<link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/garda/">
+<link rel="alternate" hreflang="x-default" href="https://shubchynskyi.pp.ua/projects/garda/">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dmytro Shubchynskyi">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="de_DE">
+<meta property="og:url" content="https://shubchynskyi.pp.ua/projects/garda/">
+<meta property="og:title" content="Garda Agent Orchestrator · Case study · Dmytro Shubchynskyi">
+<meta property="og:description" content="Case study: Garda Agent Orchestrator, an open-source CLI that gives AI coding agents a governed path from task to done, with mandatory gates, required reviews and an audit trail.">
+<meta property="og:image" content="https://shubchynskyi.pp.ua/img/og-en.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dmytro Shubchynskyi, Software Engineer · Java / Spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Garda Agent Orchestrator · Case study · Dmytro Shubchynskyi">
+<meta name="twitter:description" content="Case study: Garda Agent Orchestrator, an open-source CLI that gives AI coding agents a governed path from task to done, with mandatory gates, required reviews and an audit trail.">
+<meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/og-en.jpg">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script src="/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container">
+<a class="brand" href="/">Dmytro Shubchynskyi</a>
+<nav class="site-nav" aria-label="Main">
+<a href="/#projects">Projects</a>
+<a href="/#how">How I work</a>
+<a href="/#contact">Contact</a>
+</nav>
+<div class="header-actions">
+<div class="lang-switch" role="group" aria-label="Language">
+<a href="/projects/garda/" hreflang="en" lang="en" data-lang-link="en" aria-current="true">EN</a>
+<a href="/de/projects/garda/" hreflang="de" lang="de" data-lang-link="de">DE</a>
+</div>
+<button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark theme"><svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+<a class="cv-button" href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf" aria-label="Download CV (PDF)"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>CV</span></a>
+<details class="menu">
+<summary class="icon-button" aria-label="Menu"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav class="menu-panel" aria-label="Menu">
+<a href="/#projects">Projects</a>
+<a href="/#how">How I work</a>
+<a href="/#contact">Contact</a>
+<a href="/cv/Dmytro-Shubchynskyi-CV-EN.pdf">Download CV (PDF)</a>
+</nav>
+</details>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="container" aria-labelledby="case-title">
+<a class="back-link" href="/#projects"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>All projects</span></a>
+<div class="case-hero">
+<p class="eyebrow">Case study · Open source · Apache-2.0</p>
+<h1 id="case-title">Garda Agent Orchestrator</h1>
+<p>A local CLI that gives AI coding agents one governed path from task to done. I designed it and build it, and Garda is developed through Garda: its own task queue runs through the same gates.</p>
+</div>
+<dl class="case-meta"><div><dt class="label">Role</dt><dd>Author and maintainer</dd></div><div><dt class="label">Stack</dt><dd>TypeScript, Node.js 24, npm package</dd></div><div><dt class="label">Works with</dt><dd>Claude, Codex, Copilot, Gemini and other agents</dd></div><div><dt class="label">Links</dt><dd><a href="https://github.com/Garda-Studio/garda-agent-orchestrator">GitHub</a> · <a href="https://garda-studio.com/products/cli">Website</a> · <a href="https://www.youtube.com/watch?v=1J74BDu1sEI">Demo</a></dd></div></dl>
+</section>
+
+<section class="container case-section" aria-labelledby="problem-title">
+<div class="split">
+<div class="split-text">
+<h2 id="problem-title">The problem</h2>
+<p>Coding agents are fast, but in a real repository they skip steps, lose context, avoid reviews and declare work done too early.</p><p>Asking them to be careful does not scale across agents, sessions and projects. The order of checks has to live outside the agent.</p>
+</div>
+<div class="split-text">
+<h2>One path to done</h2>
+<p>Every task goes through the same gates in the same order. <code>garda next-step</code> prints the one command that is allowed next, so the order never depends on the agent remembering it.</p>
+<p class="label">Task lifecycle</p>
+<ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol>
+<p class="label">Gates, in order</p>
+<ol class="pipeline"><li>enter-task-mode</li><li class="sep" aria-hidden="true">→</li><li>load-rule-pack</li><li class="sep" aria-hidden="true">→</li><li>preflight</li><li class="sep" aria-hidden="true">→</li><li>compile</li><li class="sep" aria-hidden="true">→</li><li>review-context</li><li class="sep" aria-hidden="true">→</li><li>required reviews</li><li class="sep" aria-hidden="true">→</li><li>doc-impact</li><li class="sep" aria-hidden="true">→</li><li class="done">completion</li></ol>
+</div>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="self-title">
+<div class="split">
+<div class="split-text">
+<p class="label">$ garda ui</p>
+<h2 id="self-title">Garda building Garda</h2>
+<p>A real task from Garda's own queue, open in <code>garda ui</code>. Each gate leaves an event: the stepper shows which stages passed, which one is running and what is still ahead. When this was captured the task was waiting for an independent reviewer, so it reads Blocked.</p>
+</div>
+<figure class="split-media shot-frame narrow">
+<img class="shot only-light" src="/img/projects/garda-ui-overview-light.webp" width="1058" height="2352" alt="Garda UI task detail: counters for events, passed and failed gates, full-suite result and changed lines, followed by completed, current and remaining stages" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-overview-dark.webp" width="1058" height="2352" alt="Garda UI task detail: counters for events, passed and failed gates, full-suite result and changed lines, followed by completed, current and remaining stages" loading="lazy" decoding="async">
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="decisions-title">
+<h2 id="decisions-title" style="margin-bottom: 32px">Decisions that matter</h2>
+<div class="tiles"><div class="tile"><h3>Completion is a gate, not a claim</h3><p>A task becomes DONE only when the completion gate accepts the evidence: compile, required reviews and doc impact. The agent's own report does not count.</p></div><div class="tile"><h3>Reviews where the scope needs them</h3><p>Specialist review lanes for code, database, security, API, tests, performance, infrastructure, refactoring and dependencies run when the change touches their area.</p></div><div class="tile"><h3>An audit trail you can check</h3><p>Every step is a task event in a hash-chained log, and reviews leave artifacts. You can see what was checked, by whom and when.</p></div><div class="tile"><h3>Lean on tokens</h3><p>Reviewers get compact context and scoped diffs, and gate output is filtered, so a green run stays short.</p></div></div>
+</section>
+
+<section class="container case-section" aria-labelledby="config-title">
+<h2 id="config-title">Configurable, not hard-coded</h2>
+<p class="case-lead">Profiles set the depth for a task, from fast to strict. Quality rules, review order, scope limits and protected controls all live in config and are visible in the UI.</p>
+<div class="tiles">
+<figure class="split-media shot-frame">
+<img class="shot only-light" src="/img/projects/garda-ui-profiles-light.webp" width="1600" height="739" alt="Garda UI Profiles tab with the built-in balanced, fast, strict and docs-only profiles" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-profiles-dark.webp" width="1600" height="739" alt="Garda UI Profiles tab with the built-in balanced, fast, strict and docs-only profiles" loading="lazy" decoding="async">
+<figcaption>Profiles: built-in balanced, fast, strict and docs-only, plus your own.</figcaption>
+</figure>
+<figure class="split-media shot-frame">
+<img class="shot only-light" src="/img/projects/garda-ui-quality-gate-light.webp" width="1600" height="739" alt="Garda UI Quality Gate tab with the rule pack state and custom quality rules" loading="lazy" decoding="async">
+<img class="shot only-dark" src="/img/projects/garda-ui-quality-gate-dark.webp" width="1600" height="739" alt="Garda UI Quality Gate tab with the rule pack state and custom quality rules" loading="lazy" decoding="async">
+<figcaption>Quality Gate: installed rule pack and custom rules.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="try-title">
+<div class="split">
+<div class="split-text">
+<h2 id="try-title">Try it</h2>
+<p>Node.js 24 LTS or 22.13+ and Git. Open a terminal in the repository you want Garda to manage:</p>
+<p>Then hand your coding agent the generated <code>AGENT_INIT_PROMPT.md</code> and pick a task from <code>TASK.md</code>.</p>
+</div>
+<div class="split-media">
+<div class="terminal"><div><span class="prompt">$</span> npm install -g garda-agent-orchestrator</div><div><span class="prompt">$</span> garda setup</div><div><span class="prompt">$</span> garda ui</div></div>
+</div>
+</div>
+</section>
+
+<section class="container case-section" aria-label="Next case study">
+<a class="next-case" href="/projects/auth-service/"><span><span class="label">Next case study</span><strong>Authentication Service</strong></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<span>© 2026 Dmytro Shubchynskyi</span>
+<span><a href="https://github.com/Shubchynskyi">GitHub</a> · <a href="https://www.linkedin.com/in/shubchynskyi/">LinkedIn</a></span>
+</div>
+</footer>
+</body>
+</html>

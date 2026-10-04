@@ -22,6 +22,7 @@ pipeline {
                 sh 'echo "[JS DIR]" && ls -la js'
                 sh 'echo "[IMG DIR]" && ls -la img'
                 sh 'echo "[DATA DIR]" && ls -la data'
+                sh 'echo "[PAGES]" && ls -la de projects'
             }
         }
         stage('Refresh GitHub Stats') {
@@ -55,19 +56,20 @@ pipeline {
                     sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"
                     // Remove old files
                     sh """
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/css
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/js
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/img
-                        docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/data
-                        docker exec $WEBSERVER_CONTAINER rm -f $NGINX_HTML_PATH/index.html
+                        for dir in css js img data fonts cv de projects; do
+                            docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/\$dir
+                        done
+                        for file in index.html robots.txt sitemap.xml; do
+                            docker exec $WEBSERVER_CONTAINER rm -f $NGINX_HTML_PATH/\$file
+                        done
                     """
                     // Copy new files
                     sh 'echo "[COPY FILES]"'
-                    sh "docker cp index.html $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
-                    sh "docker cp css $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
-                    sh "docker cp js $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
-                    sh "docker cp img $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
-                    sh "docker cp data $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/"
+                    sh """
+                        for path in index.html robots.txt sitemap.xml css js img data fonts cv de projects; do
+                            docker cp \$path $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
+                        done
+                    """
                     // Show files in container after copy
                     sh 'echo "[CONTAINER AFTER COPY]"'
                     sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"

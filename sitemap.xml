@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://shubchynskyi.pp.ua/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/"/>
+  </url>
+  <url>
+    <loc>https://shubchynskyi.pp.ua/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/"/>
+  </url>
+  <url>
+    <loc>https://shubchynskyi.pp.ua/projects/garda/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/garda/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/garda/"/>
+  </url>
+  <url>
+    <loc>https://shubchynskyi.pp.ua/de/projects/garda/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/garda/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/garda/"/>
+  </url>
+  <url>
+    <loc>https://shubchynskyi.pp.ua/projects/auth-service/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/auth-service/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/auth-service/"/>
+  </url>
+  <url>
+    <loc>https://shubchynskyi.pp.ua/de/projects/auth-service/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/auth-service/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/auth-service/"/>
+  </url>
+</urlset>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Authentication Service · Fallstudie · Dmytro Shubchynskyi</title>
+<meta name="description" content="Fallstudie: ein Authentifizierungsdienst mit Spring Boot und React, rotierenden Refresh-Tokens, Token-Familien, Rate Limiting und Integrationstests mit Testcontainers.">
+<meta name="author" content="Dmytro Shubchynskyi">
+<link rel="canonical" href="https://shubchynskyi.pp.ua/de/projects/auth-service/">
+<link rel="alternate" hreflang="en" href="https://shubchynskyi.pp.ua/projects/auth-service/">
+<link rel="alternate" hreflang="de" href="https://shubchynskyi.pp.ua/de/projects/auth-service/">
+<link rel="alternate" hreflang="x-default" href="https://shubchynskyi.pp.ua/projects/auth-service/">
+<meta name="theme-color" content="#f6f7f9" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<link rel="preload" href="/fonts/instrument-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Dmytro Shubchynskyi">
+<meta property="og:locale" content="de_DE">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://shubchynskyi.pp.ua/de/projects/auth-service/">
+<meta property="og:title" content="Authentication Service · Fallstudie · Dmytro Shubchynskyi">
+<meta property="og:description" content="Fallstudie: ein Authentifizierungsdienst mit Spring Boot und React, rotierenden Refresh-Tokens, Token-Familien, Rate Limiting und Integrationstests mit Testcontainers.">
+<meta property="og:image" content="https://shubchynskyi.pp.ua/img/og-de.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Dmytro Shubchynskyi, Software Engineer · Java / Spring">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Authentication Service · Fallstudie · Dmytro Shubchynskyi">
+<meta name="twitter:description" content="Fallstudie: ein Authentifizierungsdienst mit Spring Boot und React, rotierenden Refresh-Tokens, Token-Familien, Rate Limiting und Integrationstests mit Testcontainers.">
+<meta name="twitter:image" content="https://shubchynskyi.pp.ua/img/og-de.jpg">
+<script>(function(){try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
+<script src="/js/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Zum Inhalt springen</a>
+<header class="site-header">
+<div class="container">
+<a class="brand" href="/de/">Dmytro Shubchynskyi</a>
+<nav class="site-nav" aria-label="Hauptnavigation">
+<a href="/de/#projects">Projekte</a>
+<a href="/de/#how">Wie ich arbeite</a>
+<a href="/de/#contact">Kontakt</a>
+</nav>
+<div class="header-actions">
+<div class="lang-switch" role="group" aria-label="Sprache">
+<a href="/projects/auth-service/" hreflang="en" lang="en" data-lang-link="en">EN</a>
+<a href="/de/projects/auth-service/" hreflang="de" lang="de" data-lang-link="de" aria-current="true">DE</a>
+</div>
+<button class="icon-button theme-toggle" type="button" data-theme-toggle aria-label="Zwischen hellem und dunklem Design wechseln"><svg class="icon icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg><svg class="icon icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></button>
+<a class="cv-button" href="/cv/Dmytro-Shubchynskyi-Lebenslauf-DE.pdf" aria-label="Lebenslauf herunterladen (PDF)"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>CV</span></a>
+<details class="menu">
+<summary class="icon-button" aria-label="Menü"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav class="menu-panel" aria-label="Menü">
+<a href="/de/#projects">Projekte</a>
+<a href="/de/#how">Wie ich arbeite</a>
+<a href="/de/#contact">Kontakt</a>
+<a href="/cv/Dmytro-Shubchynskyi-Lebenslauf-DE.pdf">Lebenslauf herunterladen (PDF)</a>
+</nav>
+</details>
+</div>
+</div>
+</header>
+<main id="main">
+<section class="container" aria-labelledby="case-title">
+<a class="back-link" href="/de/#projects"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg><span>Alle Projekte</span></a>
+<div class="case-hero">
+<p class="eyebrow">Fallstudie · Full-Stack · v1.0.0</p>
+<h1 id="case-title">Authentication Service</h1>
+<p>Registrierung, Login und Benutzerverwaltung für Webanwendungen, mit JWT-Sessions, Google-Anmeldung, Rollen und einem Admin-Bereich. Allein entwickelt, vom Sicherheitskonzept bis zur React-Oberfläche.</p>
+</div>
+<dl class="case-meta"><div><dt class="label">Rolle</dt><dd>Allein: Konzept, Backend, Frontend, Tests</dd></div><div><dt class="label">Backend</dt><dd>Java 25, Spring Boot 4, Spring Security, PostgreSQL 17</dd></div><div><dt class="label">Frontend</dt><dd>React 18, TypeScript, MUI, i18next</dd></div><div><dt class="label">Code</dt><dd><a href="https://github.com/Shubchynskyi/Authentication-service">GitHub-Repository</a></dd></div></dl>
+</section>
+
+<section class="container case-section" aria-labelledby="what-title">
+<div class="split">
+<div class="split-text">
+<h2 id="what-title">Was der Dienst kann</h2>
+<div class="feature-grid"><div><h3>Registrierung und Anmeldung</h3><p>E-Mail-Bestätigung, Passwort-Reset mit einstündigen Tokens, Google OAuth2.</p></div><div><h3>Zugriffskontrolle</h3><p>Rollen USER und ADMIN, dazu ein Whitelist- oder Blacklist-Modus dafür, wer sich überhaupt anmelden darf.</p></div><div><h3>Schutz</h3><p>Rate Limiting, Sperre nach Fehlversuchen, BCrypt, CSRF für Cookie-Abläufe, eine Standard-CSP.</p></div><div><h3>Betrieb</h3><p>Trace-IDs in jeder Logzeile, optionale JSON-Logs, ein eigenes Audit-Log für Admin-Aktionen.</p></div></div>
+</div>
+<figure class="split-media">
+<img class="shot" src="/img/projects/auth-login.webp" width="1100" height="912" alt="Die Anmeldeseite mit Feldern für E-Mail und Passwort, einer Schaltfläche für die Google-Anmeldung und Links zum Zurücksetzen des Passworts und zur Registrierung" loading="lazy" decoding="async">
+<figcaption>Anmeldeseite. Die Oberfläche ist in vier Sprachen übersetzt, Validierungsfehler eingeschlossen.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="session-title">
+<h2 id="session-title">Wie eine Session am Leben bleibt</h2>
+<p class="case-lead">Kurzlebige Access-Tokens sind der einfache Teil. Gestohlen werden Sessions über den langlebigen Refresh-Token, deshalb dreht sich der größte Teil des Konzepts um ihn.</p>
+<div class="split">
+<figure class="split-media diagram-card">
+<figcaption class="label">Refresh mit Rotation</figcaption>
+<div class="seq lg">
+<div class="seq-lifeline l1"></div><div class="seq-lifeline l2"></div><div class="seq-lifeline l3"></div>
+<div class="seq-lanes"><span>React-App</span><span class="server">Spring Boot API</span><span>PostgreSQL</span></div>
+<div class="seq-row note"><div class="seq-note">Access-Token abgelaufen<br>15 Min., im Speicher</div></div>
+<div class="seq-row tall"><div class="seq-label l12"><b>POST refresh</b><small>httpOnly-Cookie + CSRF</small></div><div class="seq-arrow a12"></div></div>
+<div class="seq-row short"><div class="seq-label l23">Token per SHA-256-Hash finden</div><div class="seq-arrow a23"></div></div><div class="seq-row short"><div class="seq-label l23">Familie prüfen, alten ausmustern</div><div class="seq-arrow a23"></div></div><div class="seq-row short"><div class="seq-label l23">Hash des neuen speichern</div><div class="seq-arrow a23"></div></div>
+<div class="seq-row tall"><div class="seq-label l12"><b>neuer Access-Token</b><small>+ rotiertes Cookie, 7 Tage</small></div><div class="seq-arrow a21"></div></div>
+</div>
+<ol class="seq-steps"><li><span class="lane">React → API</span><span>POST refresh mit httpOnly-Cookie und CSRF-Token</span></li><li><span class="lane">API → PostgreSQL</span><span>Token per SHA-256-Hash finden und rotieren</span></li><li><span class="lane">API → React</span><span>Neuer Access-Token und rotiertes Cookie für 7 Tage</span></li></ol>
+<p class="seq-alert"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><span><b>Wiederverwendung erkannt:</b> Taucht ein ausgemusterter Token wieder auf, wird seine ganze Token-Familie gesperrt.</span></p>
+</figure>
+<ol class="steps split-text"><li><span class="num">1</span><div><h3>Nichts Langlebiges in JavaScript</h3><p>Der Access-Token liegt nur im Speicher. Der Refresh-Token steckt in einem httpOnly-Cookie, das Skripte nicht lesen können.</p></div></li><li><span class="num">2</span><div><h3>Einmal-Refresh-Tokens</h3><p>Jeder Refresh mustert den alten Token aus. Die Datenbank speichert nur einen SHA-256-Hash jeder Token-ID, nie den Token selbst.</p></div></li><li><span class="num">3</span><div><h3>Familien für sauberes Sperren</h3><p>Ein Login startet eine Token-Familie. Wiederverwendung oder Logout sperrt diese Familie; eine Passwortänderung oder ein gesperrtes Konto sperrt alle.</p></div></li><li><span class="num">4</span><div><h3>Begrenzte Zahl an Sessions</h3><p>Jeder Benutzer hat ein Limit für aktive Familien. Wird es überschritten, endet die älteste Session.</p></div></li></ol>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="other-title">
+<h2 id="other-title" style="margin-bottom: 32px">Weitere Entscheidungen</h2>
+<div class="tiles"><div class="tile"><h3>Rate Limiting mit Wartehinweis</h3><p>Bucket4j begrenzt Anfragen pro IP an Auth- und Admin-Endpunkte, dazu ein erneuter Versand pro Minute und E-Mail. Ein 429 enthält Retry-After, damit die Oberfläche einen Countdown statt eines Fehlers zeigen kann.</p></div><div class="tile"><h3>Sperre, die den Inhaber informiert</h3><p>5 Fehlversuche sperren das Konto für 5 Minuten, 10 blockieren es. Beides schickt eine E-Mail, asynchron, damit die Login-Antwort nicht langsamer wird.</p></div><div class="tile"><h3>Sensible Admin-Aktionen brauchen mehr</h3><p>Der Wechsel zwischen Whitelist- und Blacklist-Modus verlangt einen Einmalcode und das Passwort. Jede Admin-Aktion landet in einem eigenen Audit-Log.</p></div><div class="tile"><h3>Logs, denen man folgen kann</h3><p>Eine Trace-ID verbindet alle Logzeilen einer Anfrage. JSON-Ausgabe ist eine Einstellung entfernt, und App, Fehler und Admin-Aktionen landen in getrennten Dateien.</p></div></div>
+</section>
+
+<section class="container case-section" aria-labelledby="masked-title">
+<div class="split" style="align-items: center">
+<div class="split-text">
+<p class="label">Ein Extra, kein Schutz</p>
+<h2 id="masked-title">Getarnter Login</h2>
+<p>Ein optionaler Modus versteckt die echte Anmeldeseite hinter einer von zehn Attrappen, von einer falschen 404-Seite bis zu einem Kochrezept. Das echte Formular öffnet sich über einen geheimen Link. Das erschwert automatisches Scannen ein wenig; die eigentliche Arbeit leisten die Maßnahmen oben.</p>
+</div>
+<figure class="split-media">
+<img class="shot" src="/img/projects/auth-masked-login.webp" width="1100" height="1100" alt="Collage der zehn Attrappen: ein 404-Fehler, ein Datenbankfehler, Lorem ipsum, eine Über-uns-Seite, ein Apfelkuchenrezept, ein Katzenfakt, Nutzungsbedingungen, ein Wartungshinweis, eine Coming-soon-Seite und eine Wetterkarte" loading="lazy" decoding="async">
+<figcaption>Die zehn Vorlagen. Der Admin wählt eine im Admin-Bereich und bestätigt mit dem Passwort.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="container case-section" aria-labelledby="tests-title">
+<h2 id="tests-title" style="margin-bottom: 32px">Wie getestet wird</h2>
+<div class="tiles">
+<div class="tile"><h3>Backend · JUnit 5, Mockito, Testcontainers</h3><ul><li>Sicherheitsfilter: JWT-Authentifizierung, Rate Limiting, Refresh-Cookie</li><li>Token-Provider, Login-Versuche und Sperre, Passwortregeln</li><li>Integrationstests für die Auth-, Admin-, Profil- und Masked-Login-Controller</li><li>Repositories gegen ein echtes PostgreSQL aus Testcontainers</li></ul></div>
+<div style="display: flex; flex-direction: column; gap: 20px">
+<div class="tile"><h3>Frontend · Vitest, Testing Library</h3><p>Komponententests für die React-Oberfläche.</p></div>
+<div class="terminal"><div class="label">Lokal starten</div><div><span class="prompt">$</span> ./build-and-test.sh</div><div><span class="prompt">$</span> ./deploy.sh local</div></div>
+</div>
+</div>
+</section>
+
+<section class="container case-section" aria-label="Nächste Fallstudie">
+<a class="next-case" href="/de/projects/garda/"><span><span class="label">Nächste Fallstudie</span><strong>Garda Agent Orchestrator</strong></span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<span>© 2026 Dmytro Shubchynskyi</span>
+<span><a href="https://github.com/Shubchynskyi">GitHub</a> · <a href="https://www.linkedin.com/in/shubchynskyi/">LinkedIn</a></span>
+</div>
+</footer>
+</body>
+</html>
