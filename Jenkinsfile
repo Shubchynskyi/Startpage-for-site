@@ -56,7 +56,7 @@ pipeline {
                     sh "docker exec $WEBSERVER_CONTAINER ls -la $NGINX_HTML_PATH/"
                     // Remove old files
                     sh """
-                        for dir in css js img data fonts cv de projects; do
+                        for dir in css js img data fonts cv de projects legal-notice privacy; do
                             docker exec $WEBSERVER_CONTAINER rm -rf $NGINX_HTML_PATH/\$dir
                         done
                         for file in index.html robots.txt sitemap.xml; do
@@ -66,7 +66,7 @@ pipeline {
                     // Copy new files
                     sh 'echo "[COPY FILES]"'
                     sh """
-                        for path in index.html robots.txt sitemap.xml css js img data fonts cv de projects; do
+                        for path in index.html robots.txt sitemap.xml css js img data fonts cv de projects legal-notice privacy; do
                             docker cp \$path $WEBSERVER_CONTAINER:$NGINX_HTML_PATH/
                         done
                     """

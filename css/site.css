@@ -62,17 +62,19 @@
     --star-line: #ecd9a0;
     --star-ink: #5c4604;
     --star: #d4a017;
-    --wip-bg: #fff8e3;
-    --wip-line: #e0c98a;
-    --wip-ink: #6b5310;
     --online: #1f9d6b;
-    --panel-dark: #1f2328;
-    --panel-dark-line: #3a424d;
-    --on-dark: #f4f5f5;
-    --on-dark-2: #c9d1d9;
-    --on-dark-muted: #9198a1;
-    --brand: #57e7dc;
-    --brand-ink: #06201e;
+    --contact-bg: #e6f4f2;
+    --contact-line: rgba(10, 122, 115, 0.3);
+    --contact-ink: #1f2328;
+    --contact-ink-2: #4d5560;
+    --contact-muted: #6b737d;
+    --contact-mail: #0a7a73;
+    --contact-mail-hover: #075c56;
+    --contact-link-bg: #ffffff;
+    --contact-link-line: #d5dae0;
+    --contact-link-ink: #1f2328;
+    --contact-primary-bg: #0a7a73;
+    --contact-primary-fg: #ffffff;
     --dots: rgba(10, 122, 115, 0.3);
     --shadow: 0 1px 2px rgba(31, 35, 40, 0.04), 0 12px 32px rgba(31, 35, 40, 0.07);
     --font: "Instrument Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -112,12 +114,19 @@
     --star-line: rgba(227, 179, 65, 0.45);
     --star-ink: #f2cc60;
     --star: #e3b341;
-    --wip-bg: rgba(227, 179, 65, 0.1);
-    --wip-line: rgba(227, 179, 65, 0.4);
-    --wip-ink: #e3b341;
     --online: #3ddc97;
-    --panel-dark: #12171e;
-    --panel-dark-line: #2f3843;
+    --contact-bg: #12171e;
+    --contact-line: #2f3843;
+    --contact-ink: #f4f5f5;
+    --contact-ink-2: #c9d1d9;
+    --contact-muted: #9198a1;
+    --contact-mail: #57e7dc;
+    --contact-mail-hover: #8ff3eb;
+    --contact-link-bg: transparent;
+    --contact-link-line: #2f3843;
+    --contact-link-ink: #f4f5f5;
+    --contact-primary-bg: #57e7dc;
+    --contact-primary-fg: #06201e;
     --dots: rgba(87, 231, 220, 0.28);
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
 }
@@ -152,12 +161,19 @@
         --star-line: rgba(227, 179, 65, 0.45);
         --star-ink: #f2cc60;
         --star: #e3b341;
-        --wip-bg: rgba(227, 179, 65, 0.1);
-        --wip-line: rgba(227, 179, 65, 0.4);
-        --wip-ink: #e3b341;
         --online: #3ddc97;
-        --panel-dark: #12171e;
-        --panel-dark-line: #2f3843;
+        --contact-bg: #12171e;
+        --contact-line: #2f3843;
+        --contact-ink: #f4f5f5;
+        --contact-ink-2: #c9d1d9;
+        --contact-muted: #9198a1;
+        --contact-mail: #57e7dc;
+        --contact-mail-hover: #8ff3eb;
+        --contact-link-bg: transparent;
+        --contact-link-line: #2f3843;
+        --contact-link-ink: #f4f5f5;
+        --contact-primary-bg: #57e7dc;
+        --contact-primary-fg: #06201e;
         --dots: rgba(87, 231, 220, 0.28);
         --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 32px rgba(0, 0, 0, 0.35);
     }
@@ -345,24 +361,25 @@ code { font-family: var(--mono); font-size: 0.92em; }
 .principle p { font-size: 15px; color: var(--ink-2); }
 
 /* Contact */
-.contact { padding: 48px 56px; border-radius: 22px; background: var(--panel-dark); border: 1px solid var(--panel-dark-line); color: var(--on-dark); display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: center; }
+.contact { padding: 48px 56px; border-radius: 22px; background: var(--contact-bg); border: 1px solid var(--contact-line); color: var(--contact-ink); display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: center; }
 .contact-text { flex: 1 1 420px; display: flex; flex-direction: column; gap: 12px; }
 .contact h2 { font-size: 34px; line-height: 1.1; font-weight: 600; letter-spacing: -0.025em; }
-.contact p { color: var(--on-dark-2); font-size: 16.5px; }
-.contact-mail { margin-top: 4px; font-size: 22px; font-weight: 500; color: var(--brand); overflow-wrap: anywhere; }
-.contact-mail:hover { color: #8ff3eb; }
+.contact p { color: var(--contact-ink-2); font-size: 16.5px; }
+.contact-mail { margin-top: 4px; font-size: 22px; font-weight: 500; color: var(--contact-mail); overflow-wrap: anywhere; }
+.contact-mail:hover { color: var(--contact-mail-hover); }
 .contact-cv { flex: 0 1 360px; display: flex; flex-direction: column; gap: 12px; }
-.cv-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 18px; border-radius: 12px; border: 1px solid var(--panel-dark-line); color: var(--on-dark); font-weight: 500; }
-.cv-link:hover { color: var(--on-dark); border-color: var(--on-dark-muted); }
-.cv-link.primary { border-color: var(--brand); background: var(--brand); color: var(--brand-ink); font-weight: 600; }
-.cv-link.primary:hover { color: var(--brand-ink); opacity: 0.92; }
-.cv-text-link { padding: 4px 2px 0; font-size: 14px; color: var(--on-dark-muted); }
-.cv-text-link:hover { color: var(--on-dark-2); }
+.cv-link { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 15px 18px; border-radius: 12px; border: 1px solid var(--contact-link-line); background: var(--contact-link-bg); color: var(--contact-link-ink); font-weight: 500; }
+.cv-link:hover { color: var(--contact-link-ink); border-color: var(--contact-muted); }
+.cv-link.primary { border-color: var(--contact-primary-bg); background: var(--contact-primary-bg); color: var(--contact-primary-fg); font-weight: 600; }
+.cv-link.primary:hover { color: var(--contact-primary-fg); opacity: 0.92; }
+.cv-text-link { padding: 4px 2px 0; font-size: 14px; color: var(--contact-muted); }
+.cv-text-link:hover { color: var(--contact-ink-2); }
 .contact-socials { display: flex; gap: 18px; font-size: 14.5px; }
-.contact-socials a { color: var(--on-dark-2); }
+.contact-socials a { color: var(--contact-ink-2); }
 
 /* Footer */
 .site-footer .container { padding-top: 44px; padding-bottom: 52px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
 .site-footer a { color: var(--muted); }
 .site-footer a:hover { color: var(--ink); }
 
@@ -407,11 +424,20 @@ code { font-family: var(--mono); font-size: 0.92em; }
 .pipeline li.done { background: var(--accent-soft); color: var(--accent-ink); }
 .pipeline .sep { padding: 0; background: none; color: var(--muted); }
 .shot-frame { padding: 12px; background: var(--surface-2); border: 1px solid var(--line); border-radius: 18px; }
-.next-case { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 36px 40px; border-radius: 20px; background: var(--panel-dark); border: 1px solid var(--panel-dark-line); color: var(--on-dark); }
-.next-case:hover { color: var(--on-dark); }
-.next-case .label { color: var(--on-dark-muted); }
+.next-case { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 36px 40px; border-radius: 20px; background: var(--contact-bg); border: 1px solid var(--contact-line); color: var(--contact-ink); }
+.next-case:hover { color: var(--contact-ink); border-color: var(--contact-mail); }
+.next-case .label { color: var(--contact-muted); }
 .next-case strong { display: block; margin-top: 6px; font-size: 28px; font-weight: 600; letter-spacing: -0.02em; }
-.next-case .icon { width: 28px; height: 28px; color: var(--brand); }
+.next-case .icon { width: 28px; height: 28px; color: var(--contact-mail); }
+
+/* Legal pages */
+.legal { max-width: 760px; padding-top: 64px; padding-bottom: 32px; }
+.legal h1 { font-size: 40px; line-height: 1.1; font-weight: 600; letter-spacing: -0.03em; margin-bottom: 10px; hyphens: auto; overflow-wrap: break-word; }
+.legal h2 { margin: 36px 0 10px; font-size: 20px; font-weight: 600; letter-spacing: -0.01em; }
+.legal p, .legal address { color: var(--ink-2); font-style: normal; }
+.legal p + p { margin-top: 10px; }
+.legal address { margin-top: 24px; line-height: 1.7; color: var(--ink); }
+.legal h2 + address { margin-top: 0; }
 
 /* Responsive */
 @media (max-width: 900px) {
@@ -447,6 +473,8 @@ code { font-family: var(--mono); font-size: 0.92em; }
     .contact h2 { font-size: 26px; }
     .contact-mail { font-size: 18px; }
     .case-hero h1 { font-size: 36px; }
+    .legal { padding-top: 40px; }
+    .legal h1 { font-size: 30px; }
     .case-hero p { font-size: 17px; }
     .case-meta > div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
     .case-meta > div:first-child { border-top: 0; }
