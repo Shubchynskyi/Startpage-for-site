@@ -79,17 +79,39 @@
 <div class="split">
 <div class="split-text">
 <h2 id="problem-title">The problem</h2>
-<p>Coding agents are fast, but in a real repository they skip steps, lose context, avoid reviews and declare work done too early.</p><p>Asking them to be careful does not scale across agents, sessions and projects. The order of checks has to live outside the agent.</p>
 </div>
 <div class="split-text">
-<h2>One path to done</h2>
-<p>Every task goes through the same gates in the same order. <code>garda next-step</code> prints the one command that is allowed next, so the order never depends on the agent remembering it.</p>
-<p class="label">Task lifecycle</p>
-<ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol>
-<p class="label">Gates, in order</p>
-<ol class="pipeline"><li>enter-task-mode</li><li class="sep" aria-hidden="true">→</li><li>load-rule-pack</li><li class="sep" aria-hidden="true">→</li><li>preflight</li><li class="sep" aria-hidden="true">→</li><li>compile</li><li class="sep" aria-hidden="true">→</li><li>review-context</li><li class="sep" aria-hidden="true">→</li><li>required reviews</li><li class="sep" aria-hidden="true">→</li><li>doc-impact</li><li class="sep" aria-hidden="true">→</li><li class="done">completion</li></ol>
+<p>Coding agents are fast, but in a real repository they skip steps, lose context, avoid reviews and declare work done too early.</p><p>Asking them to be careful does not scale across agents, sessions and projects. The order of checks has to live outside the agent.</p>
 </div>
 </div>
+</section>
+
+<section class="container case-section" aria-labelledby="path-title">
+<h2 id="path-title">One path to done</h2>
+<p class="case-lead">Every task goes through the same gates in the same order. A failed review does not end the task or restart it: the agent fixes the finding, and the same path picks up again.</p>
+<figure class="diagram">
+<p class="flow-nav"><code>garda next-step</code> runs before the first gate and after every gate, and prints the one command allowed next.</p>
+<ol class="flow"><li><b>Enter task</b><small>task mode, rule pack</small></li><li><b>Preflight</b><small>handshake, smoke check, change classification</small></li><li><b>Compile</b><small>build, full test suite when required</small></li><li class="is-review"><b>Reviews</b><small>a fresh reviewer for each required lane</small><span class="flow-loop-inline" aria-hidden="true">Review finds a problem → focused fix → evidence refreshed → new reviewer with a clean context</span></li><li><b>Doc impact</b><small>docs checked against the change</small></li><li><b>Completion</b><small>evidence checked, audit summary</small></li><li class="is-done"><b>DONE</b><small>reported by next-step</small></li></ol>
+<div class="flow-loop-row"><p class="flow-loop">Review finds a problem → focused fix → evidence refreshed → new reviewer with a clean context</p></div>
+<div class="flow-status"><span class="label">Task status</span><ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol><span>or BLOCKED while it waits on something</span></div>
+</figure>
+</section>
+
+<section class="container case-section" aria-labelledby="fit-title">
+<h2 id="fit-title">How it fits your setup</h2>
+<p class="case-lead">Garda sits between your agent and your repository. It does not write code: it decides what is allowed next and keeps the record.</p>
+<figure class="diagram">
+<div class="arch">
+<div class="arch-box"><h3>Your coding agent</h3><div class="chips"><span>Claude Code</span><span>Codex</span><span>Copilot</span><span>Gemini</span><span>…</span></div><p>Does the work and runs garda commands.</p></div>
+<div class="arch-link" aria-hidden="true"><span>runs commands</span><span class="back">next allowed command</span></div>
+<div class="arch-box arch-cli"><h3><code>garda CLI</code></h3><ul><li>next-step navigator</li><li>gates in a fixed order</li><li>rule packs and profiles</li><li>review receipts checked</li></ul></div>
+<div class="arch-link" aria-hidden="true"><span>writes events<br>and review artifacts</span></div>
+<div class="arch-box arch-repo"><h3>Your repository</h3><ul><li><code>TASK.md</code><span>task queue</span></li><li><code>live/</code><span>rules, config, skills</span></li><li><code>runtime/task-events/</code><span>hash-chained event log</span></li><li><code>runtime/reviews/</code><span>verdicts and receipts</span></li></ul></div>
+<div class="arch-box arch-below c1" data-link="launches"><h3>Fresh reviewer</h3><p>A sub-agent with a clean context, one review lane. Its verdict is recorded through garda.</p></div>
+<div class="arch-box arch-below c5" data-link="reads"><h3><code>garda ui</code></h3><p>Local dashboard on 127.0.0.1. Reads the same files; actions need your confirmation.</p></div>
+</div>
+<p class="arch-note">Everything runs on your machine: a Node.js CLI and your Git repository. No Garda server, no account.</p>
+</figure>
 </section>
 
 <section class="container case-section" aria-labelledby="self-title">
@@ -109,6 +131,12 @@
 <section class="container case-section" aria-labelledby="decisions-title">
 <h2 id="decisions-title" style="margin-bottom: 32px">Decisions that matter</h2>
 <div class="tiles"><div class="tile"><h3>Completion is a gate, not a claim</h3><p>A task becomes DONE only when the completion gate accepts the evidence: compile, required reviews and doc impact. The agent's own report does not count.</p></div><div class="tile"><h3>Reviews where the scope needs them</h3><p>Specialist review lanes for code, database, security, API, tests, performance, infrastructure, refactoring and dependencies run when the change touches their area.</p></div><div class="tile"><h3>An audit trail you can check</h3><p>Every step is a task event in a hash-chained log, and reviews leave artifacts. You can see what was checked, by whom and when.</p></div><div class="tile"><h3>Lean on tokens</h3><p>Reviewers get compact context and scoped diffs, and gate output is filtered, so a green run stays short.</p></div></div>
+</section>
+
+<section class="container case-section" aria-labelledby="modes-title">
+<h2 id="modes-title">Re-review without starting over</h2>
+<p class="case-lead">After a fix, the gate decides how much of each review lane has to run again. The agent does not get to choose.</p>
+<div class="modes"><div class="mode"><span class="mode-tag ">REUSE</span><h3>Nothing changed</h3><p>Nothing in the lane's scope changed since the last review, so the authenticated verdict still counts.</p></div><div class="mode"><span class="mode-tag delta">DELTA</span><h3>A bounded repair</h3><p>The reviewer checks the fix against the complete history of the earlier review, not the whole change again.</p></div><div class="mode"><span class="mode-tag full">FULL</span><h3>The whole lane again</h3><p>The first review of a lane is always FULL. Anything stale, oversized, protected or unclear falls back to FULL.</p></div></div><p class="modes-note">DELTA is available only when the task profile allows it.</p>
 </section>
 
 <section class="container case-section" aria-labelledby="config-title">

@@ -55,6 +55,29 @@
         });
     }
 
+    // On the home page the hero already offers the CV, so the header copy waits
+    // until the hero's button scrolls out of view. Pages without a hero keep it visible.
+    function setupHeaderCv() {
+        var headerCv = document.querySelector('.site-header .cv-button');
+        var heroCv = document.querySelector('.hero .button-primary');
+        if (!headerCv || !heroCv || !('IntersectionObserver' in window)) return;
+        var header = headerCv.closest('.site-header');
+        var offset = header.offsetHeight;
+
+        function setHidden(hidden) {
+            header.classList.toggle('cv-deferred', hidden);
+        }
+
+        var rect = heroCv.getBoundingClientRect();
+        setHidden(rect.bottom > offset && rect.top < window.innerHeight);
+        window.requestAnimationFrame(function () {
+            header.classList.add('cv-animate');
+        });
+        new IntersectionObserver(function (entries) {
+            setHidden(entries[entries.length - 1].isIntersecting);
+        }, { rootMargin: '-' + offset + 'px 0px 0px 0px' }).observe(heroCv);
+    }
+
     function renderStars(node, count) {
         if (typeof count !== 'number' || !isFinite(count)) return;
         var value = node.querySelector('[data-stars-value]');
@@ -79,6 +102,7 @@
     }
 
     setupThemeToggle();
+    setupHeaderCv();
     setupLanguageLinks();
     setupMenu();
     setupGitHubStars();

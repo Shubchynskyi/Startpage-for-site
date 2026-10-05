@@ -79,17 +79,39 @@
 <div class="split">
 <div class="split-text">
 <h2 id="problem-title">Das Problem</h2>
-<p>Coding-Agenten sind schnell, aber in echten Repositories überspringen sie Schritte, verlieren Kontext, umgehen Reviews und erklären Arbeit zu früh für fertig.</p><p>Sie um Sorgfalt zu bitten, skaliert nicht über Agenten, Sessions und Projekte. Die Reihenfolge der Prüfungen muss außerhalb des Agenten liegen.</p>
 </div>
 <div class="split-text">
-<h2>Ein Weg bis „fertig“</h2>
-<p>Jede Aufgabe durchläuft dieselben Gates in derselben Reihenfolge. <code>garda next-step</code> gibt genau den Befehl aus, der als Nächstes erlaubt ist; die Reihenfolge hängt also nie davon ab, ob sich der Agent daran erinnert.</p>
-<p class="label">Aufgaben-Lebenszyklus</p>
-<ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol>
-<p class="label">Gates, in Reihenfolge</p>
-<ol class="pipeline"><li>enter-task-mode</li><li class="sep" aria-hidden="true">→</li><li>load-rule-pack</li><li class="sep" aria-hidden="true">→</li><li>preflight</li><li class="sep" aria-hidden="true">→</li><li>compile</li><li class="sep" aria-hidden="true">→</li><li>review-context</li><li class="sep" aria-hidden="true">→</li><li>required reviews</li><li class="sep" aria-hidden="true">→</li><li>doc-impact</li><li class="sep" aria-hidden="true">→</li><li class="done">completion</li></ol>
+<p>Coding-Agenten sind schnell, aber in echten Repositories überspringen sie Schritte, verlieren Kontext, umgehen Reviews und erklären Arbeit zu früh für fertig.</p><p>Sie um Sorgfalt zu bitten, skaliert nicht über Agenten, Sessions und Projekte. Die Reihenfolge der Prüfungen muss außerhalb des Agenten liegen.</p>
 </div>
 </div>
+</section>
+
+<section class="container case-section" aria-labelledby="path-title">
+<h2 id="path-title">Ein Weg bis „fertig“</h2>
+<p class="case-lead">Jede Aufgabe durchläuft dieselben Gates in derselben Reihenfolge. Ein fehlgeschlagenes Review beendet die Aufgabe nicht und startet sie nicht neu: Der Agent behebt den Befund, und derselbe Weg geht weiter.</p>
+<figure class="diagram">
+<p class="flow-nav"><code>garda next-step</code> läuft vor dem ersten Gate und nach jedem Gate und gibt den einzigen Befehl aus, der als Nächstes erlaubt ist.</p>
+<ol class="flow"><li><b>Aufgabe starten</b><small>Task-Modus, Regelpaket</small></li><li><b>Preflight</b><small>Handshake, Smoke-Check, Einordnung der Änderung</small></li><li><b>Compile</b><small>Build, volle Testsuite falls verlangt</small></li><li class="is-review"><b>Reviews</b><small>ein frischer Reviewer pro verbindlichem Bereich</small><span class="flow-loop-inline" aria-hidden="true">Review findet ein Problem → gezielter Fix → Nachweise aktualisiert → neuer Reviewer mit frischem Kontext</span></li><li><b>Doc-Impact</b><small>Doku gegen die Änderung geprüft</small></li><li><b>Completion</b><small>Nachweise geprüft, Audit-Zusammenfassung</small></li><li class="is-done"><b>DONE</b><small>gemeldet von next-step</small></li></ol>
+<div class="flow-loop-row"><p class="flow-loop">Review findet ein Problem → gezielter Fix → Nachweise aktualisiert → neuer Reviewer mit frischem Kontext</p></div>
+<div class="flow-status"><span class="label">Aufgabenstatus</span><ol class="pipeline"><li>TODO</li><li class="sep" aria-hidden="true">→</li><li>IN_PROGRESS</li><li class="sep" aria-hidden="true">→</li><li>IN_REVIEW</li><li class="sep" aria-hidden="true">→</li><li class="done">DONE</li></ol><span>oder BLOCKED, solange sie auf etwas wartet</span></div>
+</figure>
+</section>
+
+<section class="container case-section" aria-labelledby="fit-title">
+<h2 id="fit-title">Wie es sich einfügt</h2>
+<p class="case-lead">Garda sitzt zwischen Agent und Repository. Es schreibt keinen Code: Es entscheidet, was als Nächstes erlaubt ist, und führt das Protokoll.</p>
+<figure class="diagram">
+<div class="arch">
+<div class="arch-box"><h3>Ihr Coding-Agent</h3><div class="chips"><span>Claude Code</span><span>Codex</span><span>Copilot</span><span>Gemini</span><span>…</span></div><p>Erledigt die Arbeit und ruft garda-Befehle auf.</p></div>
+<div class="arch-link" aria-hidden="true"><span>ruft Befehle auf</span><span class="back">nächster erlaubter Befehl</span></div>
+<div class="arch-box arch-cli"><h3><code>garda CLI</code></h3><ul><li>Navigator next-step</li><li>Gates in fester Reihenfolge</li><li>Regelpakete und Profile</li><li>Review-Belege geprüft</li></ul></div>
+<div class="arch-link" aria-hidden="true"><span>schreibt Ereignisse<br>und Review-Artefakte</span></div>
+<div class="arch-box arch-repo"><h3>Ihr Repository</h3><ul><li><code>TASK.md</code><span>Aufgabenliste</span></li><li><code>live/</code><span>Regeln, Konfiguration, Skills</span></li><li><code>runtime/task-events/</code><span>hash-verkettetes Ereignislog</span></li><li><code>runtime/reviews/</code><span>Urteile und Belege</span></li></ul></div>
+<div class="arch-box arch-below c1" data-link="startet"><h3>Frischer Reviewer</h3><p>Ein Sub-Agent mit frischem Kontext, ein Review-Bereich. Sein Urteil wird über garda erfasst.</p></div>
+<div class="arch-box arch-below c5" data-link="liest"><h3><code>garda ui</code></h3><p>Lokales Dashboard auf 127.0.0.1. Liest dieselben Dateien; Aktionen brauchen Ihre Bestätigung.</p></div>
+</div>
+<p class="arch-note">Alles läuft auf Ihrem Rechner: ein Node.js-CLI und Ihr Git-Repository. Kein Garda-Server, kein Konto.</p>
+</figure>
 </section>
 
 <section class="container case-section" aria-labelledby="self-title">
@@ -109,6 +131,12 @@
 <section class="container case-section" aria-labelledby="decisions-title">
 <h2 id="decisions-title" style="margin-bottom: 32px">Entscheidungen, auf die es ankommt</h2>
 <div class="tiles"><div class="tile"><h3>Fertig ist ein Gate, keine Behauptung</h3><p>Eine Aufgabe wird erst DONE, wenn das Completion-Gate die Nachweise akzeptiert: Compile, verbindliche Reviews und Doc-Impact. Der eigene Bericht des Agenten zählt nicht.</p></div><div class="tile"><h3>Reviews dort, wo der Umfang es verlangt</h3><p>Spezialisierte Reviews für Code, Datenbank, Sicherheit, API, Tests, Performance, Infrastruktur, Refactoring und Abhängigkeiten laufen, wenn die Änderung ihren Bereich berührt.</p></div><div class="tile"><h3>Ein überprüfbarer Audit-Trail</h3><p>Jeder Schritt ist ein Ereignis in einem hash-verketteten Log, und Reviews hinterlassen Artefakte. Man sieht, was geprüft wurde, von wem und wann.</p></div><div class="tile"><h3>Sparsam mit Tokens</h3><p>Reviewer bekommen kompakten Kontext und eingegrenzte Diffs, und Gate-Ausgaben werden gefiltert, damit ein grüner Durchlauf kurz bleibt.</p></div></div>
+</section>
+
+<section class="container case-section" aria-labelledby="modes-title">
+<h2 id="modes-title">Erneutes Review ohne Neustart</h2>
+<p class="case-lead">Nach einem Fix entscheidet das Gate, wie viel von jedem Review-Bereich erneut laufen muss. Der Agent darf das nicht selbst wählen.</p>
+<div class="modes"><div class="mode"><span class="mode-tag ">REUSE</span><h3>Nichts geändert</h3><p>Im Umfang des Bereichs hat sich seit dem letzten Review nichts geändert, das authentifizierte Urteil zählt weiter.</p></div><div class="mode"><span class="mode-tag delta">DELTA</span><h3>Eine begrenzte Reparatur</h3><p>Der Reviewer prüft den Fix gegen die vollständige Historie des früheren Reviews, nicht die ganze Änderung erneut.</p></div><div class="mode"><span class="mode-tag full">FULL</span><h3>Der ganze Bereich erneut</h3><p>Das erste Review eines Bereichs ist immer FULL. Alles Veraltete, Übergroße, Geschützte oder Unklare fällt auf FULL zurück.</p></div></div><p class="modes-note">DELTA ist nur verfügbar, wenn das Aufgabenprofil es erlaubt.</p>
 </section>
 
 <section class="container case-section" aria-labelledby="config-title">
